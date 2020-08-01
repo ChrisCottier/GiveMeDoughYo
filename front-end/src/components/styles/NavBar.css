@@ -4,3 +4,9 @@
   font-size: 24px;
   font-weight: 900;
 }
+
+.search-icon {
+  background-image: url(../images/search-icon-35px.jpg);
+  height: 35px;
+  width: 35px;
+}

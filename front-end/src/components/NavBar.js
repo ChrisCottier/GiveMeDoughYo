@@ -2,9 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles/NavBar.css";
 
+import Explore from "./sub-components/Explore";
+
 const NavBar = () => {
   return (
-    <nav className="navbar">
+    <nav className="navbar is-fixed-top">
       {/* <div className="navbar-column1"> */}
       <NavLink to="/" className="logo navbar-brand">
         GIVEMEDOUGHYO
@@ -15,7 +17,13 @@ const NavBar = () => {
             explore dropdown
             about
             search */}
-          <div></div>
+          <Explore></Explore>
+          <div className="navbar-item ">
+            <NavLink to="/about">About</NavLink>
+          </div>
+          <div id="search-icon" className="navbar-item">
+            <div className="search-icon"></div>
+          </div>
         </div>
 
         <div className="navbar-end">
@@ -33,6 +41,7 @@ const NavBar = () => {
       {/* </div> */}
       {/* <div className="navbar-column2"></div> */}
     </nav>
+    // TODO OTHER DIV THAT HASTHE SEARCH BAR THAT REPLACES THE NAVBAR
   );
 };
 
