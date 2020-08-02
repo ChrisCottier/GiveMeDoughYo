@@ -10,3 +10,8 @@
   height: 35px;
   width: 35px;
 }
+
+.start-campaign {
+  border-right: 1px solid gray;
+  padding-right: 20px;
+}
