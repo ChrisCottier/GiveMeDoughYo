@@ -5,9 +5,11 @@ import {} from "react-redux";
 import "./styles/NavBar.css";
 import Explore from "./sub-components/Explore";
 import Login from "./sub-components/Login";
+import SignUp from "./sub-components/SignUp";
 
 const NavBar = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
 
   // const loginModal = () => {
   //   setShowLogin(true);
@@ -51,13 +53,14 @@ const NavBar = () => {
             <div className="navbar-item" onClick={() => setShowLogin(true)}>
               <div>Log In</div>
             </div>
-            <div className="navbar-item">
+            <div className="navbar-item" onClick={() => setShowSignUp(true)}>
               <div>Sign Up</div>
             </div>
           </div>
         </div>
       </nav>
       <Login showLogin={showLogin} setShowLogin={setShowLogin}></Login>
+      <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp}></SignUp>
     </>
 
     // TODO OTHER DIV THAT HASTHE SEARCH BAR THAT REPLACES THE NAVBAR

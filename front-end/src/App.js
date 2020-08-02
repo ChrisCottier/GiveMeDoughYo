@@ -3,6 +3,7 @@ import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 
 import "./index.css";
 import "bulma/css/bulma.css";
+import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 
 import Home from "./components/Home";
 import User from "./components/User";

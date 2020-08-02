@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { submitLogin } from "../../actions/auth";
+import EmailPasswordInputs from "./EmailPasswordInputs";
 
 const Login = (props) => {
   const { showLogin, setShowLogin } = props;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(submitLogin(email, password));
+  };
+
   let displayType;
   if (!showLogin) {
     displayType = "none";
@@ -9,42 +22,34 @@ const Login = (props) => {
     displayType = "block";
   }
 
+  const modalOff = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (
+      event.target.classList.contains("modal-background") ||
+      event.target.classList.contains("cancel-login")
+    ) {
+      setShowLogin(false);
+    }
+  };
+
   return (
-    <div className="modal" display={displayType}>
-      <div
-        className="modal-background"
-        onClick={() => setShowLogin(false)}
-      ></div>
+    <div className="modal" style={{ display: displayType }}>
+      <div className="modal-background " onClick={modalOff}></div>
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">Welcome back!</p>
         </header>
         <section className="modal-card-body">
           <div>Log in to continue.</div>
-          <form>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control has-icons-left has-icons-right">
-                <input
-                  className="input"
-                  type="email"
-                  placeholder="Email input"
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-envelope"></i>
-                </span>
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  classname="input"
-                  type="password"
-                  placeholder="password"
-                />
-              </div>
-            </div>
+          <form onSubmit={handleSubmit}>
+            <EmailPasswordInputs
+              email={email}
+              setemail={setEmail}
+              password={password}
+              setpassword={setPassword}
+            ></EmailPasswordInputs>
             <div className="field is-grouped">
               <div className="control">
                 <button className="button is-link" type="submit">
@@ -56,8 +61,8 @@ const Login = (props) => {
               </div>
               <div className="control">
                 <button
-                  className="button is-link is-light"
-                  onClick={() => setShowLogin(false)}
+                  className="button is-link is-light cancel-login"
+                  onClick={modalOff}
                 >
                   Cancel
                 </button>
