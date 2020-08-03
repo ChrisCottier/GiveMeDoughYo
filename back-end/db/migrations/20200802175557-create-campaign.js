@@ -51,7 +51,6 @@ module.exports = {
       },
       currentTotal: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         defaultValue: 0,
       },
       urlPath: {

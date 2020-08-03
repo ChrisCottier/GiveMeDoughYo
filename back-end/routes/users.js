@@ -25,6 +25,8 @@ usersRouter.post(
 
     const token = generateUserToken(user);
 
+    console.log(token);
+
     res.json(token);
   })
 );

@@ -33,7 +33,6 @@ module.exports = {
       },
       balance: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         defaultValue: 50000,
       },
       profilePic: {

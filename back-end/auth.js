@@ -10,7 +10,6 @@ const generateUserToken = (user) => {
   const userDataForToken = {
     id: user.id,
     email: user.email,
-    username: user.username,
   };
 
   const token = jwt.sign({ data: userDataForToken }, secret, {

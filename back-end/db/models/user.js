@@ -28,7 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       balance: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 50000,
       },
       profilePic: {
