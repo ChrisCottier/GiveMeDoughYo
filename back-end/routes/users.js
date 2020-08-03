@@ -2,7 +2,7 @@ const express = require("express");
 const usersRouter = express.Router();
 const bcrypt = require("bcryptjs");
 
-const { User } = require("../db/models");
+const { User, Campaign, Follow, Contribution } = require("../db/models");
 const { asyncHandler } = require("../utils");
 const { generateUserToken } = require("../auth");
 
@@ -65,8 +65,13 @@ usersRouter.get(
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
 
-    const userData = await User.findByPk(id);
-    console.log(userData);
+    const userData = await User.findByPk(id, {
+      include: [
+        { model: Campaign },
+        { model: Follow, include: { model: Campaign } },
+        { model: Contribution },
+      ],
+    });
 
     res.json(userData);
   })

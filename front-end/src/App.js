@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import "./index.css";
 import "bulma/css/bulma.css";
-import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
+// import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 
 import Home from "./components/Home";
 import User from "./components/User";
@@ -19,17 +19,15 @@ function App() {
     dispatch(hasAccessToken());
   });
   return (
-    <main>
-      <BrowserRouter>
-        <Navbar></Navbar>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/campaigns/:title" component={Campaign} />
-          <Route path="/users/:id" component={User} />
-          <Route path="/search/:query" component={Search} />
-        </Switch>
-      </BrowserRouter>
-    </main>
+    <BrowserRouter>
+      <Navbar></Navbar>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/campaigns/:title" component={Campaign} />
+        <Route path="/users/:id" component={User} />
+        <Route path="/search/:query" component={Search} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

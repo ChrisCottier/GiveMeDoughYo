@@ -20,6 +20,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
       },
+      city: {
+        type: DataTypes.STRING(50),
+      },
+      stateProvince: {
+        type: DataTypes.STRING(50),
+      },
+      country: {
+        type: DataTypes.STRING(50),
+      },
       shortDescription: {
         type: DataTypes.STRING(255),
       },

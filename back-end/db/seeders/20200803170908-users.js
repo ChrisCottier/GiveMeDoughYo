@@ -19,6 +19,9 @@ module.exports = {
         email: "demo@gmail.com",
         hashedPassword:
           "$2a$08$uJ6MSmKT3O008tMBup4Xi.4y34onw45awvn.6HZHsDcmBY4Y4W.jS",
+        city: "Chicago",
+        stateProvince: "Illinois",
+        country: "United States",
         shortDescription:
           "I didn't feel like making a new account, so here I am!",
         aboutMe:

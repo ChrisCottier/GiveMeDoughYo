@@ -1,3 +1,7 @@
+.navbar {
+  border-bottom: 1px solid lightgray;
+}
+
 .logo {
   color: #e51075;
   font-family: "Varela Round", sans-serif;

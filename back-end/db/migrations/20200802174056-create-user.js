@@ -25,6 +25,15 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      city: {
+        type: Sequelize.STRING(50),
+      },
+      stateProvince: {
+        type: Sequelize.STRING(50),
+      },
+      country: {
+        type: Sequelize.STRING(50),
+      },
       shortDescription: {
         type: Sequelize.STRING(255),
       },
