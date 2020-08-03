@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import {} from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./styles/NavBar.css";
+import { appName } from "../config";
 import Explore from "./sub-components/Explore";
 import Login from "./sub-components/Login";
 import SignUp from "./sub-components/SignUp";
+import { NavLoggedIn, NavLoggedOut } from "./sub-components/NavbarAuthLinks";
 
-const NavBar = () => {
+const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  const loggedIn = useSelector((state) => state.auth.token);
 
-  // const loginModal = () => {
-  //   setShowLogin(true);
-  // };
+  useEffect(() => {
+    setShowSignUp(false);
+    setShowLogin(false);
+  }, [loggedIn]);
+
+  let authLinks;
+
+  if (loggedIn) {
+    authLinks = <NavLoggedIn></NavLoggedIn>;
+    // setShowLogin(false);
+    // setShowSignUp(false);
+  } else {
+    authLinks = (
+      <NavLoggedOut
+        setShowLogin={setShowLogin}
+        setShowSignUp={setShowSignUp}
+      ></NavLoggedOut>
+    );
+  }
 
   return (
     <>
       <nav className="navbar is-fixed-top">
         <NavLink to="/" className="logo navbar-brand">
-          GIVEMEDOUGHYO
+          {appName.toUpperCase()}
         </NavLink>
         <div className="navbar-menu">
           <div className="navbar-start">
@@ -50,12 +69,7 @@ const NavBar = () => {
                 Start A Campaign
               </NavLink>
             </div>
-            <div className="navbar-item" onClick={() => setShowLogin(true)}>
-              <div>Log In</div>
-            </div>
-            <div className="navbar-item" onClick={() => setShowSignUp(true)}>
-              <div>Sign Up</div>
-            </div>
+            {authLinks}
           </div>
         </div>
       </nav>
@@ -74,4 +88,4 @@ const NavBar = () => {
 <NavLink to="/search/example">Search</NavLink> */
 }
 
-export default NavBar;
+export default Navbar;

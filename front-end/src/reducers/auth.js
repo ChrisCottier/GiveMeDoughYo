@@ -1,10 +1,16 @@
-import { SET_TOKEN } from "../actions/auth";
-const authReducer = (state = {}, action) => {
+import { SET_TOKEN, REMOVE_TOKEN } from "../actions/auth";
+const auth = (state = {}, action) => {
   switch (action.type) {
     case SET_TOKEN: {
       return {
         ...state,
         token: action.token,
+      };
+    }
+    case REMOVE_TOKEN: {
+      return {
+        ...state,
+        token: null,
       };
     }
 
@@ -13,4 +19,4 @@ const authReducer = (state = {}, action) => {
   }
 };
 
-export default authReducer;
+export default auth;

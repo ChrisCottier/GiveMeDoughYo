@@ -46,9 +46,9 @@ const Login = (props) => {
           <form onSubmit={handleSubmit}>
             <EmailPasswordInputs
               email={email}
-              setemail={setEmail}
+              setEmail={setEmail}
               password={password}
-              setpassword={setPassword}
+              setPassword={setPassword}
             ></EmailPasswordInputs>
             <div className="field is-grouped">
               <div className="control">

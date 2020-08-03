@@ -7,9 +7,11 @@ import App from "./App";
 
 const store = configureStore();
 
+console.log(store);
+
 ReactDOM.render(
   <React.StrictMode>
-    <Provider state={store}>
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,

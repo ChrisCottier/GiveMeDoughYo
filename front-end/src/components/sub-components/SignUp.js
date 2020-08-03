@@ -84,9 +84,9 @@ const SignUp = (props) => {
             </div>
             <EmailPasswordInputs
               email={email}
-              setemail={setEmail}
+              setEmail={setEmail}
               password={password}
-              setpassword={setPassword}
+              setPassword={setPassword}
             ></EmailPasswordInputs>
             <div className="field">
               <div className="control">
