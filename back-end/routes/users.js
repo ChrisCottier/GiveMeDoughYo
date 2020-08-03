@@ -24,10 +24,51 @@ usersRouter.post(
     //Give User token
 
     const token = generateUserToken(user);
+    const userId = user.id;
+    res.json({ userId, token });
+  })
+);
 
-    console.log(token);
+usersRouter.post(
+  "/login",
+  asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({
+      where: {
+        email,
+      },
+    });
 
-    res.json(token);
+    let validPassword = false;
+    if (user) {
+      validPassword = bcrypt.compareSync(
+        password,
+        user.hashedPassword.toString()
+      );
+    }
+
+    if (!user || !validPassword) {
+      res.ok = false;
+      res.status(401);
+      res.json({ message: "The provided credentials were invalid." });
+    } else {
+      const token = generateUserToken(user);
+
+      const userId = user.id;
+      res.json({ userId, token });
+    }
+  })
+);
+
+usersRouter.get(
+  "/:id",
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+
+    const userData = await User.findByPk(id);
+    console.log(userData);
+
+    res.json(userData);
   })
 );
 

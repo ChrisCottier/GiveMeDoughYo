@@ -12,16 +12,16 @@ import { NavLoggedIn, NavLoggedOut } from "./sub-components/NavbarAuthLinks";
 const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
-  const loggedIn = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     setShowSignUp(false);
     setShowLogin(false);
-  }, [loggedIn]);
+  }, [token]);
 
   let authLinks;
 
-  if (loggedIn) {
+  if (token) {
     authLinks = <NavLoggedIn></NavLoggedIn>;
     // setShowLogin(false);
     // setShowSignUp(false);

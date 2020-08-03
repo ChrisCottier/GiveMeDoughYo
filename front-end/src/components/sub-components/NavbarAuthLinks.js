@@ -9,7 +9,7 @@ export const NavLoggedIn = () => {
 
   const logOut = () => {
     document.cookie = `${ACCESS_TOKEN}=;`;
-    dispatch(removeToken);
+    dispatch(removeToken());
     // return <Redirect to="/"></Redirect>;
   };
   return (

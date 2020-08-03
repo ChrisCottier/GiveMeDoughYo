@@ -1,0 +1,15 @@
+import { baseUrl } from "../config";
+
+export const USER_PAGE = "USER_PAGE";
+
+const userPage = (userData) => ({
+  type: USER_PAGE,
+  userData,
+});
+
+export const getUserInfo = (id) => async (dispatch) => {
+  const res = await fetch(`${baseUrl}/users/${id}`);
+  const userData = await res.json();
+
+  dispatch(userPage(userData));
+};

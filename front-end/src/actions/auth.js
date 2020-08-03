@@ -4,9 +4,10 @@ export const ACCESS_TOKEN = "ACCESS_TOKEN";
 export const SET_TOKEN = "SET_TOKEN";
 export const REMOVE_TOKEN = "REMOVE_TOKEN";
 
-export const setToken = (token) => ({
+export const setToken = (token, userId) => ({
   type: SET_TOKEN,
   token,
+  userId,
 });
 
 export const removeToken = () => ({
@@ -14,16 +15,16 @@ export const removeToken = () => ({
 });
 
 export const submitLogin = (email, password) => async (dispatch) => {
-  const res = await fetch(`${baseUrl}/login`, {
+  const res = await fetch(`${baseUrl}/users/login`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
 
   if (res.ok) {
-    const { token } = await res.json();
+    const { token, userId } = await res.json();
     document.cookie = `${ACCESS_TOKEN}=${token}`;
-    dispatch(setToken(token));
+    dispatch(setToken(token, userId));
   }
 };
 
@@ -37,10 +38,9 @@ export const submitSignUp = (firstName, lastName, email, password) => async (
   });
 
   if (res.ok) {
-    const token = await res.json();
-    console.log(token);
+    const { token, userId } = await res.json();
     document.cookie = `${ACCESS_TOKEN}=${token}`;
-    dispatch(setToken(token));
+    dispatch(setToken(token, userId));
   }
 };
 
