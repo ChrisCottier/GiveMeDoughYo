@@ -6,7 +6,6 @@ const users = (state = {}, action) => {
     case USER_PAGE: {
       const {
         aboutMe,
-        avatar,
         city,
         country,
         firstName,
@@ -20,7 +19,6 @@ const users = (state = {}, action) => {
         ...state,
         user: {
           aboutMe,
-          avatar,
           city,
           country,
           firstName,
@@ -34,7 +32,6 @@ const users = (state = {}, action) => {
     }
     case CAMPAIGN_PAGE: {
       const {
-        avatar,
         city,
         country,
         firstName,
@@ -46,7 +43,6 @@ const users = (state = {}, action) => {
       return {
         ...state,
         user: {
-          avatar,
           city,
           country,
           firstName,

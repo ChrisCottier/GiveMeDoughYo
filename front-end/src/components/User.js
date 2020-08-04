@@ -2,17 +2,20 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 
+import "./styles/User.css";
 import { getUserInfo } from "../actions/users";
 import {
   UserProfileView,
   CampaignsView,
 } from "./sub-components/UserProfileViews";
+import contributions from "../reducers/contributions";
 
 const User = (props) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
   const { campaigns } = useSelector((state) => state.campaigns);
+  const { contributionsCount } = useSelector((state) => state.contributions);
 
   useEffect(() => {
     dispatch(getUserInfo(id));
@@ -36,7 +39,7 @@ const User = (props) => {
             </h1>
             <h2 className="user-location">
               <i className="fas fa-map-marker-alt"></i>
-              {user.city}, {user.stateProvince}, {user.country}
+              {`  ${user.city}, ${user.stateProvince}, ${user.country}`}
             </h2>
           </div>
           <nav className="navbar user-navbar">
@@ -59,7 +62,11 @@ const User = (props) => {
         {campaignView ? (
           <CampaignsView></CampaignsView>
         ) : (
-          <UserProfileView user={user} campaigns={campaigns}></UserProfileView>
+          <UserProfileView
+            user={user}
+            campaigns={campaigns}
+            contributionsCount={contributionsCount}
+          ></UserProfileView>
         )}
         {/* PART 1 PROFILE VIEW */}
         {/* PART 2 CAMPAIGN VIEW */}

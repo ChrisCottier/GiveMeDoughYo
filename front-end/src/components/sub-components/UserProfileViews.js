@@ -1,22 +1,34 @@
 import React from "react";
 
 export const UserProfileView = (props) => {
-  const { user, campaigns } = props;
+  const { user, campaigns, contributionsCount } = props;
 
   return (
-    <>
-      <article className="profile-left">
-        <h2>{user.shortDescription}</h2>
+    <div className="profile-container columns">
+      <article className="profile-left column is-three-fifths">
+        <img className="profilePic" src={user.profilePic}></img>
+        <div className="user-short-description">{user.shortDescription}</div>
         <p>{user.aboutMe}</p>
-        <img src={user.profilePic}></img>
       </article>
-      <div className="profile-right">
+      <div className="margin space column"></div>
+
+      <div className="profile-right column is-one-third">
         <div className="about-me">
-          <h3>About Me</h3>
-          <div>{campaigns.length} Campaigns</div>
+          <img className="avatar user-page-avatar" src={user.profilePic}></img>
+          <h3 className="profile-header">About Me</h3>
+        </div>
+        <div className="user-stats">
+          <div>
+            <span className="user-stat-num">{campaigns.length}</span>{" "}
+            <span className="user-stat-category"> Campaigns</span>
+          </div>
+          <div>
+            <span className="user-stat-num">{contributionsCount}</span>{" "}
+            <span className="user-stat-category"> Contributions</span>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

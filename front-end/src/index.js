@@ -6,8 +6,8 @@ import configureStore from "./store";
 import App from "./App";
 
 const store = configureStore();
-// console.log("REMINDER: your store is in the window");
-// window.store = store;
+console.log("REMINDER: your store is in the window");
+window.store = store;
 
 ReactDOM.render(
   <React.StrictMode>

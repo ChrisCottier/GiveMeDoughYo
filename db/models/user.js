@@ -42,9 +42,6 @@ module.exports = (sequelize, DataTypes) => {
       profilePic: {
         type: DataTypes.STRING,
       },
-      avatar: {
-        type: DataTypes.STRING,
-      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

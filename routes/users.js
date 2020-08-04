@@ -75,8 +75,6 @@ usersRouter.get(
 
     const profilePic = await getS3Url(userData.profilePic);
     userData.profilePic = profilePic;
-    const avatar = await getS3Url(userData.avatar);
-    userData.avatar = avatar;
 
     res.json(userData);
   })
