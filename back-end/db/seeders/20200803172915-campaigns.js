@@ -20,7 +20,6 @@ module.exports = {
         userId: 1,
         duration: 50,
         campaignPic: "",
-        otherPics: ["yo"],
         story:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a neque scelerisque nisi semper viverra. Donec ac faucibus leo. Praesent eu eleifend urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi ultricies mauris libero, in congue mauris malesuada ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer posuere elementum tellus, non imperdiet tellus facilisis quis. Proin auctor eu lectus vitae ultrices. Etiam luctus in nisl eu ullamcorper. Cras porttitor condimentum lacus sit amet dictum. Sed et luctus nulla, vitae tempor nulla. In sit amet consectetur felis. Donec ornare at nibh sed accumsan. Donec blandit est vel quam gravida aliquet. Nam urna justo, dictum sed bibendum vitae, tincidunt id tortor.",
         contactEmail: "demo@gmail.com",

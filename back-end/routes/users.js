@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const bcrypt = require("bcryptjs");
 
 const { User, Campaign, Follow, Contribution } = require("../db/models");
-const { asyncHandler } = require("../utils");
+const { asyncHandler, getS3Url } = require("../utils");
 const { generateUserToken } = require("../auth");
 
 usersRouter.post(
@@ -72,6 +72,12 @@ usersRouter.get(
         { model: Contribution },
       ],
     });
+
+    const profilePic = await getS3Url(userData.profilePic);
+    userData.profilePic = profilePic;
+    const avatar = await getS3Url(userData.avatar);
+    userData.avatar = avatar;
+    console.log("USER prof pic", userData.profilePic);
 
     res.json(userData);
   })

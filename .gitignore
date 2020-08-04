@@ -1,3 +1,4 @@
 node_modules
 .env
 db-commands.txt
+aws-settings.txt

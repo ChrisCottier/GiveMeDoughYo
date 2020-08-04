@@ -12,6 +12,8 @@ export const getUserInfo = (id) => async (dispatch) => {
   const userData = await res.json();
   if (res.ok) {
     userData.Contributions = userData.Contributions.length;
+    // let test = await fetch(userData.profilePic);
+    // console.log(test);
 
     dispatch(userPage(userData));
   }

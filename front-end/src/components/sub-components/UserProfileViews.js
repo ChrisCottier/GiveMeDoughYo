@@ -2,11 +2,13 @@ import React from "react";
 
 export const UserProfileView = (props) => {
   const { user, campaigns } = props;
+
   return (
     <>
       <article className="profile-left">
         <h2>{user.shortDescription}</h2>
         <p>{user.aboutMe}</p>
+        <img src={user.profilePic}></img>
       </article>
       <div className="profile-right">
         <div className="about-me">
