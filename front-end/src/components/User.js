@@ -29,7 +29,7 @@ const User = (props) => {
   return (
     <main>
       <div className="user-page-container container is-widescreen">
-        <header className="user-page-header hero is-light">
+        <header className="user-page-header hero">
           <div className="hero-body">
             <h1 className="user-name title">
               {user.firstName} {user.lastName}
