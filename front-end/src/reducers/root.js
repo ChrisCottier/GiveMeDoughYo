@@ -5,6 +5,7 @@ import users from "./users";
 import campaigns from "./campaigns";
 import follows from "./follows";
 import contributions from "./contributions";
+import categories from "./categories";
 
 const rootReducer = combineReducers({
   auth,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   campaigns,
   follows,
   contributions,
+  categories,
 });
 
 export default rootReducer;

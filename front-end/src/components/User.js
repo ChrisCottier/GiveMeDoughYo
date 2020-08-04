@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 
 import { getUserInfo } from "../actions/users";
+import {
+  UserProfileView,
+  CampaignsView,
+} from "./sub-components/UserProfileViews";
 
 const User = (props) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
+  const { campaigns } = useSelector((state) => state.campaigns);
 
   useEffect(() => {
     dispatch(getUserInfo(id));
@@ -16,8 +21,10 @@ const User = (props) => {
   if (!user) {
     return null;
   }
-
-  console.log("your user", user);
+  let campaignView = false;
+  if (window.location.href.endsWith("campaigns")) {
+    campaignView = true;
+  }
 
   return (
     <main>
@@ -33,20 +40,23 @@ const User = (props) => {
       <nav className="navbar">
         <div className="navbar-start">
           <NavLink className="navbar-item is-active" to={`/users/${user.id}`}>
-            {" "}
-            Profile{" "}
+            Profile
           </NavLink>
-          <NavLink className="navbar-item is-active" to={`/users/${user.id}`}>
-            {" "}
-            Campaigns{" "}
+          <NavLink
+            className="navbar-item is-active"
+            to={`/users/${user.id}/campaigns`}
+          >
+            Campaigns
           </NavLink>
         </div>
       </nav>
-      <article>
-        <h2>{user.shortDescription}</h2>
-        <p>{user.aboutMe}</p>
-      </article>
-      <div></div>
+      {campaignView ? (
+        <CampaignsView></CampaignsView>
+      ) : (
+        <UserProfileView user={user} campaigns={campaigns}></UserProfileView>
+      )}
+      {/* PART 1 PROFILE VIEW */}
+      {/* PART 2 CAMPAIGN VIEW */}
     </main>
   );
 };

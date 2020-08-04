@@ -1,4 +1,5 @@
 import { USER_PAGE } from "../actions/users";
+import { CAMPAIGN_PAGE } from "../actions/campaigns";
 
 const users = (state = {}, action) => {
   console.log(action);
@@ -28,6 +29,31 @@ const users = (state = {}, action) => {
           profilePic,
           id,
           shortDescription,
+          stateProvince,
+        },
+      };
+    }
+    case CAMPAIGN_PAGE: {
+      const {
+        avatar,
+        city,
+        country,
+        firstName,
+        lastName,
+        profilePic,
+        id,
+        stateProvince,
+      } = action.campaignData.User;
+      return {
+        ...state,
+        user: {
+          avatar,
+          city,
+          country,
+          firstName,
+          lastName,
+          profilePic,
+          id,
           stateProvince,
         },
       };

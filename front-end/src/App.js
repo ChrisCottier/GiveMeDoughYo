@@ -23,8 +23,10 @@ function App() {
       <Navbar></Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/campaigns/:title" component={Campaign} />
-        <Route path="/users/:id" component={User} />
+        <Route path="/campaigns/:id" component={Campaign} />
+        {/* TODO IF ITS EASY ENOUGH CHANGE ROUTE TO /campaigns/:title */}
+        <Route exact path="/users/:id" component={User} />
+        <Route path="/users/:id/campaigns" component={User} />
         <Route path="/search/:query" component={Search} />
       </Switch>
     </BrowserRouter>

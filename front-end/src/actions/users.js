@@ -10,9 +10,9 @@ const userPage = (userData) => ({
 export const getUserInfo = (id) => async (dispatch) => {
   const res = await fetch(`${baseUrl}/users/${id}`);
   const userData = await res.json();
+  if (res.ok) {
+    userData.Contributions = userData.Contributions.length;
 
-  userData.Contributions = userData.Contributions.length;
-  console.log("DFHKJFSDHKHFSDUHFG", userData);
-
-  dispatch(userPage(userData));
+    dispatch(userPage(userData));
+  }
 };
