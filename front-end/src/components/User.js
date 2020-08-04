@@ -28,35 +28,42 @@ const User = (props) => {
 
   return (
     <main>
-      <div>
-        {user.firstName} {user.lastName}
+      <div className="user-page-container container is-widescreen">
+        <header className="user-page-header hero is-light">
+          <div className="hero-body">
+            <h1 className="user-name title">
+              {user.firstName} {user.lastName}
+            </h1>
+            <h2 className="user-location">
+              <i className="fas fa-map-marker-alt"></i>
+              {user.city}, {user.stateProvince}, {user.country}
+            </h2>
+          </div>
+          <nav className="navbar user-navbar">
+            <div className="navbar-start">
+              <NavLink
+                className="navbar-item is-active"
+                to={`/users/${user.id}`}
+              >
+                Profile
+              </NavLink>
+              <NavLink
+                className="navbar-item is-active"
+                to={`/users/${user.id}/campaigns`}
+              >
+                Campaigns
+              </NavLink>
+            </div>
+          </nav>
+        </header>
+        {campaignView ? (
+          <CampaignsView></CampaignsView>
+        ) : (
+          <UserProfileView user={user} campaigns={campaigns}></UserProfileView>
+        )}
+        {/* PART 1 PROFILE VIEW */}
+        {/* PART 2 CAMPAIGN VIEW */}
       </div>
-      <div className="location">
-        <i className="fas fa-map-marker-alt"></i>
-        <div>
-          {user.city}, {user.stateProvince}, {user.country}
-        </div>
-      </div>
-      <nav className="navbar">
-        <div className="navbar-start">
-          <NavLink className="navbar-item is-active" to={`/users/${user.id}`}>
-            Profile
-          </NavLink>
-          <NavLink
-            className="navbar-item is-active"
-            to={`/users/${user.id}/campaigns`}
-          >
-            Campaigns
-          </NavLink>
-        </div>
-      </nav>
-      {campaignView ? (
-        <CampaignsView></CampaignsView>
-      ) : (
-        <UserProfileView user={user} campaigns={campaigns}></UserProfileView>
-      )}
-      {/* PART 1 PROFILE VIEW */}
-      {/* PART 2 CAMPAIGN VIEW */}
     </main>
   );
 };

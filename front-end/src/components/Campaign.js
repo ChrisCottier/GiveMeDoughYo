@@ -7,12 +7,20 @@ import { getCampaignInfo } from "../actions/campaigns";
 const Campaign = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const campaign = useSelector((state) => state.campaigns.campaign);
 
   useEffect(() => {
     dispatch(getCampaignInfo(id));
   }, [id]);
 
-  return <div>Campaign Page</div>;
+  if (!campaign) {
+    return null;
+  }
+  return (
+    <main>
+      <div>{campaign.title}</div>
+    </main>
+  );
 };
 
 export default Campaign;
