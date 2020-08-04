@@ -15,7 +15,6 @@ export const getCampaignInfo = (id) => async (dispatch) => {
     campaignData.Contributions = campaignData.Contributions.length;
     campaignData.Follows = campaignData.Follows.length;
 
-    console.log(campaignData);
     dispatch(campaignPage(campaignData));
   }
 };

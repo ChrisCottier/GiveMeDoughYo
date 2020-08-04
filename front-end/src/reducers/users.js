@@ -2,7 +2,6 @@ import { USER_PAGE } from "../actions/users";
 import { CAMPAIGN_PAGE } from "../actions/campaigns";
 
 const users = (state = {}, action) => {
-  console.log(action);
   switch (action.type) {
     case USER_PAGE: {
       const {

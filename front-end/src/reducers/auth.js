@@ -1,6 +1,5 @@
 import { SET_TOKEN, REMOVE_TOKEN } from "../actions/auth";
 const auth = (state = {}, action) => {
-  console.log(action);
   switch (action.type) {
     case SET_TOKEN: {
       return {
