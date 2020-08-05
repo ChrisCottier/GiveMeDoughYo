@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./styles/User.css";
 import { getUserInfo } from "../actions/users";
@@ -8,7 +8,6 @@ import {
   UserProfileView,
   CampaignsView,
 } from "./sub-components/UserProfileViews";
-import contributions from "../reducers/contributions";
 
 const User = (props) => {
   const { id } = useParams();
@@ -16,6 +15,22 @@ const User = (props) => {
   const { user } = useSelector((state) => state.users);
   const { campaigns } = useSelector((state) => state.campaigns);
   const { contributionsCount } = useSelector((state) => state.contributions);
+  const [profileNav, setProfileNav] = useState("selected-nav");
+  const [campaignNav, setCampaignNav] = useState("");
+
+  const handleNav = (event) => {
+    setProfileNav("");
+    setCampaignNav("");
+
+    const name = event.target.getAttribute("name");
+    console.log(name);
+
+    if (name === "profileNav") {
+      setProfileNav("selected-nav");
+    } else if (name === "campaignNav") {
+      setCampaignNav("selected-nav");
+    }
+  };
 
   useEffect(() => {
     dispatch(getUserInfo(id));
@@ -24,11 +39,6 @@ const User = (props) => {
   if (!user) {
     return null;
   }
-  let campaignView = false;
-  if (window.location.href.endsWith("campaigns")) {
-    campaignView = true;
-  }
-
   return (
     <main>
       <div className="user-page-container container is-widescreen">
@@ -44,30 +54,33 @@ const User = (props) => {
           </div>
           <nav className="navbar user-navbar">
             <div className="navbar-start">
-              <NavLink
-                className="navbar-item is-active"
-                to={`/users/${user.id}`}
+              <a
+                className={`navbar-item is-link ${profileNav}`}
+                name="profileNav"
+                onClick={handleNav}
               >
                 Profile
-              </NavLink>
-              <NavLink
-                className="navbar-item is-active"
-                to={`/users/${user.id}/campaigns`}
+              </a>
+              <a
+                className={`navbar-item is-link ${campaignNav}`}
+                name="campaignNav"
+                onClick={handleNav}
               >
                 Campaigns
-              </NavLink>
+              </a>
             </div>
           </nav>
         </header>
-        {campaignView ? (
-          <CampaignsView></CampaignsView>
-        ) : (
+        {profileNav ? (
           <UserProfileView
             user={user}
             campaigns={campaigns}
             contributionsCount={contributionsCount}
           ></UserProfileView>
+        ) : (
+          <></>
         )}
+        {campaignNav ? <CampaignsView></CampaignsView> : <></>}
         {/* PART 1 PROFILE VIEW */}
         {/* PART 2 CAMPAIGN VIEW */}
       </div>

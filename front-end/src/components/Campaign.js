@@ -18,7 +18,13 @@ const Campaign = () => {
   }
   return (
     <main>
-      <div>{campaign.title}</div>
+      <div className="campaign-page-container container is-widescreen">
+        <div className="campaign-top columns">
+          <div className="campaign-images column is-three-fifths">wow</div>
+          <div className="margin-space column"></div>
+          <div className="campaign-status column is-one-third">hi</div>
+        </div>
+      </div>
     </main>
   );
 };
