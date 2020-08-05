@@ -59,30 +59,35 @@ module.exports = {
       },
       perk1Cost: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       perk1: {
         type: Sequelize.STRING(100),
       },
       perk2Cost: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       perk2: {
         type: Sequelize.STRING(100),
       },
       perk3Cost: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       perk3: {
         type: Sequelize.STRING(100),
       },
       perk4Cost: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       perk4: {
         type: Sequelize.STRING(100),
       },
       perk5Cost: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       perk5: {
         type: Sequelize.STRING(100),

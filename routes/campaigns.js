@@ -8,7 +8,7 @@ const {
   Contribution,
   Category,
 } = require("../db/models");
-const { asyncHandler } = require("../utils");
+const { asyncHandler, getS3Url } = require("../utils");
 
 campaignsRouter.get(
   "/:id",
@@ -23,6 +23,10 @@ campaignsRouter.get(
         { model: Category },
       ],
     });
+
+    const campaignPic = await getS3Url(campaignData.campaignPic);
+    campaignData.campaignPic = campaignPic;
+    console.log(campaignData);
 
     res.json(campaignData);
   })

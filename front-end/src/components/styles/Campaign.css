@@ -1,0 +1,58 @@
+.campaign-top {
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.campaign-pic {
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 600px;
+}
+
+/* .campaign-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.other-pics {
+  display: flex;
+  justify-content: center;
+}
+
+.campaign-status {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.campaign-user-details {
+  display: flex;
+}
+
+.campaign-progress {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.spaced-out {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#campaign-back-it {
+  background-color: #e51075;
+  color: white;
+}
+
+#campaign-follow {
+  color: #e51075;
+}
+
+.follow-heart {
+  margin-right: 8px;
+}

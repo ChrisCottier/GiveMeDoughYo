@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 
 import "./styles/NavBar.css";
 import { appName } from "../config";
-import Explore from "./sub-components/Explore";
-import Login from "./sub-components/Login";
-import SignUp from "./sub-components/SignUp";
-import { NavLoggedIn, NavLoggedOut } from "./sub-components/NavbarAuthLinks";
+import Explore from "./sub-components/Navbar-Explore";
+import Login from "./sub-components/Navbar-Login";
+import SignUp from "./sub-components/Navbar-SignUp";
+import { NavLoggedIn, NavLoggedOut } from "./sub-components/Navbar-AuthLinks";
 
 const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);

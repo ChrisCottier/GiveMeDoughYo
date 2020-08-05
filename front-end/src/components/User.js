@@ -7,7 +7,7 @@ import { getUserInfo } from "../actions/users";
 import {
   UserProfileView,
   CampaignsView,
-} from "./sub-components/UserProfileViews";
+} from "./sub-components/User-ProfileViews";
 
 const User = (props) => {
   const { id } = useParams();
@@ -36,7 +36,7 @@ const User = (props) => {
     dispatch(getUserInfo(id));
   }, [id]);
 
-  if (!user) {
+  if (!user || !campaigns) {
     return null;
   }
   return (

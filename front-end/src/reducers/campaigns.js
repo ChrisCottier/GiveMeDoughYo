@@ -33,6 +33,7 @@ const campaigns = (state = {}, action) => {
         perk4,
         perk5Cost,
         perk5,
+        perks,
         urlPath,
       } = action.campaignData;
       return {
@@ -58,6 +59,7 @@ const campaigns = (state = {}, action) => {
           perk4,
           perk5Cost,
           perk5,
+          perks,
           urlPath,
         },
       };
