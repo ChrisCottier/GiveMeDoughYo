@@ -56,3 +56,40 @@
 .follow-heart {
   margin-right: 8px;
 }
+
+.campaign-perk-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid lightgray;
+  margin-top: 10px;
+}
+
+.campaign-perk-cost {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.campaign-bold {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.campaign-perks-title {
+  text-align: center;
+}
+
+#progress-bar {
+  background-color: lightgray;
+  border-radius: 13px;
+  /* (height of inner div) / 2 + padding */
+  /* padding: 3px; */
+}
+
+#progress-bar > div {
+  background-color: #34ca96;
+  /* width: 80%; */
+  /* Adjust with JavaScript */
+  height: 20px;
+  border-radius: 10px;
+}

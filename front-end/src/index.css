@@ -6,3 +6,11 @@
 main {
   margin-top: 60px;
 }
+
+.modal-background {
+  position: relative;
+}
+.modal-card {
+  position: absolute;
+  top: 20%;
+}
