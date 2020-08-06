@@ -1,38 +1,46 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { searchFor, doneSearching } from "../actions/campaigns";
+import { getCategories } from "../actions/categories";
 
-import Navbar from "./Navbar";
-import {
-  searchFor,
-  clearSearch,
-  setQueryAndCat,
-  doneSearching,
-} from "../actions/campaigns";
+import "./styles/Search.css";
+import { SearchTile, SearchFilter } from "./sub-components/Search-Components";
 
 const Search = () => {
-  const { category, query } = useParams();
-  // const { currentSearchCategory, currentSearchQuery } = useSelector(
-  //   (state) => state.campaigns
-  // );
+  let { category, query } = useParams();
+  const { campaigns } = useSelector((state) => state.campaigns);
+  const [filterCategory, setFilterCategory] = useState(category);
+  console.log("filtercategory", filterCategory);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // if (category === currentSearchCategory && query === currentSearchQuery) {
-    //   return;
-    // }
     dispatch(doneSearching());
-    console.log("sending search in search component");
+    dispatch(getCategories());
     dispatch(searchFor(query, category));
-
-    return () => dispatch(clearSearch());
   }, [category, query]);
-  // dispatch(setQueryAndCat(query, category));
 
+  if (campaigns === undefined || campaigns === null) {
+    return null;
+  }
   return (
-    <>
-      <main>Search Page</main>
-    </>
+    <main>
+      <div className="search-page-container container is-widescreen">
+        <div className="search-results columns">
+          <div className="filter column is-one-quarter">
+            <SearchFilter setFilterCategory={setFilterCategory}></SearchFilter>
+          </div>
+          <div className="matches column is-three-quarters">
+            <div className="tile is-ancestor">
+              {campaigns.map((campaign) => {
+                return <SearchTile campaign={campaign}></SearchTile>;
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 

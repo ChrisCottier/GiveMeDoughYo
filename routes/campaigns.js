@@ -11,7 +11,6 @@ const {
   Category,
 } = require("../db/models");
 const { asyncHandler, getS3Url } = require("../utils");
-
 campaignsRouter.get(
   "/:id",
   asyncHandler(async (req, res, next) => {
@@ -44,6 +43,7 @@ campaignsRouter.get(
 
     if (category === "all") {
       matchingCampaigns = await Campaign.findAll({
+        include: { model: Category },
         where: {
           [Op.or]: {
             title: {
@@ -59,7 +59,7 @@ campaignsRouter.get(
         },
       });
       for (let campaign of matchingCampaigns) {
-        let campaignPic = getS3Url(campaign.campaignPic);
+        let campaignPic = await getS3Url(campaign.campaignPic);
         campaign.campaignPic = campaignPic;
       }
     } else {

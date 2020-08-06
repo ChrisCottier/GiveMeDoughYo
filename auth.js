@@ -10,6 +10,8 @@ const generateUserToken = (user) => {
   const userDataForToken = {
     id: user.id,
     email: user.email,
+    profilePic: user.profilePic,
+    firstName: user.firstName,
   };
 
   const token = jwt.sign({ data: userDataForToken }, secret, {
@@ -41,7 +43,7 @@ const requireAuth = (req, res, next) => {
       return next(err);
     }
 
-    const { id } = jwtPayload.data;
+    const { id, email, profilePic, firstName } = jwtPayload.data;
 
     try {
       req.user = await User.findByPk(id);
@@ -59,7 +61,46 @@ const requireAuth = (req, res, next) => {
   });
 };
 
+const loggedInUser = (req, res, next) => {
+  //DOES WHAT: this middleware checks if the user is logged in (has valid token). If they are, their instance is grabbed and passed in the req.
+  //WHEN TO RUN: this middleware should be ran when we want to determine how to render a frontend page from a get request. We check who is logged in, and if it matches the id of
+  // the get path for user or user songs we render it with extra stuff.           For example, if a user visits a profile page or
+  //a user's songs page, we would run this and see if the person is logged in and the owner. if yes, we'd add links to edit account, or edit/add songs page(s).
+  //WHERE TO RUN IT: it's a middleware, run before rendering pug to see if we need to render certain options/links for user.
+  const { token } = req;
+  console.log("TOKENNNNNNNNNNNNNNNNNNNNNNNNNNNN", token);
+
+  if (!token) {
+    req.user = null;
+    next();
+    return;
+  }
+
+  return jwt.verify(token, secret, null, async (err, jwtPayload) => {
+    if (err) {
+      err.status = 405;
+      return next(err);
+    }
+
+    console.log("JWTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", jwtPayload);
+    const { id } = jwtPayload.data;
+
+    try {
+      const user = await User.findByPk(id);
+      if (user !== null) {
+        req.user = user;
+        console.log("user attached");
+      }
+    } catch (err) {
+      return next(err);
+    }
+
+    next();
+  });
+};
+
 module.exports = {
   generateUserToken,
   requireAuth,
+  loggedInUser,
 };

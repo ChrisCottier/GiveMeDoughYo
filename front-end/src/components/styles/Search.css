@@ -1,0 +1,91 @@
+.search-tile {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.fund-follow {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+  color: #088366;
+}
+
+.card-apart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-tagline {
+  padding-top: 5px;
+  color: #088366;
+}
+
+.card-category {
+  font-weight: 700;
+  color: #088366;
+}
+
+.card-total {
+  font-weight: 700;
+  color: #088366;
+}
+
+.card-currency {
+  font-weight: 200;
+  font-size: 12px;
+  color: #088366;
+}
+
+.card-progress {
+  font-weight: 700;
+  color: #088366;
+}
+
+#card-progress-bar {
+  background-color: lightgray;
+  border-radius: 13px;
+  /* (height of inner div) / 2 + padding */
+  /* padding: 3px; */
+}
+
+#card-progress-bar > div {
+  background-color: #34ca96;
+  /* width: 80%; */
+  /* Adjust with JavaScript */
+  height: 10px;
+  border-radius: 10px;
+}
+
+.card-time-left {
+  padding-top: 7px;
+}
+
+.filter-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-subtitle {
+  color: lightgray;
+  font-weight: 700;
+}
+
+.search-category-field {
+  color: #088366;
+  margin: 10px 10px;
+  font-size: 20px;
+}
+
+.search-category-name {
+  margin: 3px 3px;
+  color: #088366;
+}
+
+.search-category-name:hover {
+  margin: 3px 3px;
+  color: #e51075;
+  cursor: pointer;
+  font-weight: 700;
+}

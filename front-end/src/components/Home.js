@@ -3,7 +3,7 @@ import React from "react";
 import SearchBar from "./sub-components/Navbar-SearchBar";
 
 const Home = () => {
-  return <main>{/* <SearchBar></SearchBar> */}</main>;
+  return <main>Home</main>;
 };
 
 export default Home;

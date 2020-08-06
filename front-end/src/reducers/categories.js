@@ -1,4 +1,5 @@
 import { CAMPAIGN_PAGE } from "../actions/campaigns";
+import { CATEGORY_LIST } from "../actions/categories";
 
 const categories = (state = {}, action) => {
   switch (action.type) {
@@ -7,6 +8,13 @@ const categories = (state = {}, action) => {
       return {
         ...state,
         category: name,
+      };
+    }
+
+    case CATEGORY_LIST: {
+      return {
+        ...state,
+        categories: action.categories,
       };
     }
 

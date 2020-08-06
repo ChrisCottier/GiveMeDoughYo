@@ -13,7 +13,9 @@ import { NavLoggedIn, NavLoggedOut } from "./sub-components/Navbar-AuthLinks";
 const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
-  const token = useSelector((state) => state.auth.token);
+  const { token, userId, firstName, profilePic } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     setShowSignUp(false);
@@ -23,7 +25,13 @@ const Navbar = () => {
   let authLinks;
 
   if (token) {
-    authLinks = <NavLoggedIn></NavLoggedIn>;
+    authLinks = (
+      <NavLoggedIn
+        firstName={firstName}
+        userId={userId}
+        profilePic={profilePic}
+      ></NavLoggedIn>
+    );
   } else {
     authLinks = (
       <NavLoggedOut

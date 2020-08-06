@@ -2,8 +2,6 @@ import { USER_PAGE } from "../actions/users";
 
 import {
   CAMPAIGN_PAGE,
-  SEARCH_PARAMS,
-  CLEAR_SEARCH,
   MATCHING_CAMPAIGNS,
   SEARCHING,
   DONE_SEARCHING,
@@ -71,22 +69,6 @@ const campaigns = (state = {}, action) => {
           urlPath,
           daysLeft,
         },
-      };
-    }
-
-    case SEARCH_PARAMS: {
-      return {
-        ...state,
-        currentSearchQuery: action.currentSearchQuery,
-        currentSearchCategory: action.currentSearchCategory,
-      };
-    }
-
-    case CLEAR_SEARCH: {
-      return {
-        ...state,
-        currentSearchCategory: null,
-        currentSearchCategory: null,
       };
     }
 

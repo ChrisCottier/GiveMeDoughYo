@@ -1,10 +1,6 @@
 import { baseUrl } from "../config";
 
 export const CAMPAIGN_PAGE = "CAMPAIGN_PAGE";
-
-export const SEARCH_PARAMS = "SEARCH_PARAMS";
-export const CLEAR_SEARCH = "CLEAR_SEARCH";
-
 export const SEARCHING = "SEARCHING";
 export const DONE_SEARCHING = "DONE_SEARCHING";
 export const MATCHING_CAMPAIGNS = "MATCHING_CAMPAIGNS";
@@ -27,15 +23,6 @@ export const doneSearching = () => ({
   type: DONE_SEARCHING,
 });
 
-export const setQueryAndCat = (currentSearchQuery, currentSearchCategory) => ({
-  type: SEARCH_PARAMS,
-  currentSearchQuery,
-  currentSearchCategory,
-});
-
-export const clearSearch = () => ({
-  type: CLEAR_SEARCH,
-});
 export const getCampaignInfo = (id) => async (dispatch) => {
   const res = await fetch(`${baseUrl}/campaigns/${id}`);
   const campaignData = await res.json();
@@ -59,6 +46,10 @@ export const searchFor = (query, category) => async (dispatch) => {
 
   if (res.ok) {
     const matchingCampaigns = await res.json();
+    for (let campaign of matchingCampaigns) {
+      let days = daysLeft(campaign);
+      campaign.daysLeft = days;
+    }
     console.log("successful search", matchingCampaigns);
     dispatch(matches(matchingCampaigns));
   }

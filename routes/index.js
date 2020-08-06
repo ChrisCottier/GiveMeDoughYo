@@ -4,9 +4,11 @@ const router = express.Router();
 const usersRouter = require("./users");
 const campaignsRouter = require("./campaigns");
 const contributionsRouter = require("./contributions");
+const categoriesRouter = require("./categories");
 
 router.use(`/users`, usersRouter);
 router.use("/campaigns", campaignsRouter);
 router.use("/contributions", contributionsRouter);
+router.use("/categories", categoriesRouter);
 
 module.exports = router;

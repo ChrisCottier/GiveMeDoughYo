@@ -6,6 +6,8 @@ const auth = (state = {}, action) => {
         ...state,
         token: action.token,
         userId: action.userId,
+        firstName: action.firstName,
+        profilePic: action.profilePic,
       };
     }
     case REMOVE_TOKEN: {
@@ -13,6 +15,8 @@ const auth = (state = {}, action) => {
         ...state,
         token: null,
         userId: null,
+        firstName: null,
+        profilePic: null,
       };
     }
 

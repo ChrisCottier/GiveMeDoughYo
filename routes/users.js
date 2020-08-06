@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const { User, Campaign, Follow, Contribution } = require("../db/models");
 const { asyncHandler, getS3Url } = require("../utils");
-const { generateUserToken } = require("../auth");
+const { generateUserToken, loggedInUser } = require("../auth");
 
 usersRouter.post(
   "/",
@@ -24,8 +24,9 @@ usersRouter.post(
     //Give User token
 
     const token = generateUserToken(user);
-    const userId = user.id;
-    res.json({ userId, token });
+    let { userId, profilePic } = user;
+    profilePic = await getS3Url(profilePic);
+    res.json({ userId, token, firstName, profilePic });
   })
 );
 
@@ -54,14 +55,15 @@ usersRouter.post(
     } else {
       const token = generateUserToken(user);
 
-      const userId = user.id;
-      res.json({ userId, token });
+      let { userId, firstName, profilePic } = user;
+      profilePic = await getS3Url(profilePic);
+      res.json({ userId, token, firstName, profilePic });
     }
   })
 );
 
 usersRouter.get(
-  "/:id",
+  "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
 
@@ -77,6 +79,20 @@ usersRouter.get(
     userData.profilePic = profilePic;
 
     res.json(userData);
+  })
+);
+
+usersRouter.get(
+  "/restore",
+  loggedInUser,
+  asyncHandler(async (req, res, next) => {
+    if (req.user) {
+      let { id, firstName, email, profilePic } = req.user;
+      profilePic = await getS3Url(profilePic);
+      res.json({ id, firstName, email, profilePic });
+    } else {
+      res.json(null);
+    }
   })
 );
 

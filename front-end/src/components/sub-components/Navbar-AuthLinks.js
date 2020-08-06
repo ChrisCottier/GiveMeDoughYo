@@ -4,17 +4,24 @@ import { Redirect, NavLink } from "react-router-dom";
 
 import { removeToken, ACCESS_TOKEN } from "../../actions/auth";
 
-export const NavLoggedIn = () => {
+export const NavLoggedIn = (props) => {
+  const { firstName, userId, profilePic } = props;
   const dispatch = useDispatch();
 
   const logOut = () => {
     document.cookie = `${ACCESS_TOKEN}=;`;
     dispatch(removeToken());
-    // return <Redirect to="/"></Redirect>;
   };
   return (
     <div className="navbar-item has-dropdown is-hoverable">
-      <div className="navbar-link">Profile</div>
+      <div className="navbar-link">
+        <div
+          id="profile-avatar"
+          class="is-rounded"
+          style={{ backgroundImage: `url(${profilePic})` }}
+        />
+        <span>{firstName}</span>
+      </div>
       <div className="navbar-dropdown">
         <NavLink to="/" className="navbar-item" onClick={logOut}>
           Log Out
