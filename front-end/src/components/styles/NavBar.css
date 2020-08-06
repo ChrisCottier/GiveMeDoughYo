@@ -9,10 +9,9 @@
   font-weight: 900;
 }
 
-.search-icon {
-  background-image: url(../images/search-icon-35px.jpg);
-  height: 35px;
-  width: 35px;
+#search-icon {
+  /* background-image: url(../images/search-icon-35px.jpg); */
+  border: hidden;
 }
 
 .start-campaign {

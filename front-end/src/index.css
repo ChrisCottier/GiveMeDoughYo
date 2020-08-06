@@ -14,3 +14,7 @@ main {
   position: absolute;
   top: 20%;
 }
+
+.logo.navbar-brand {
+  padding-top: 10px;
+}

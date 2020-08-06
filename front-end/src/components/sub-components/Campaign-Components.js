@@ -54,6 +54,9 @@ export const CampaignStatus = (props) => {
 const Progress = (props) => {
   const { campaign } = props;
   const { contributionsCount } = useSelector((state) => state.contributions);
+  const { successfulContribution } = useSelector(
+    (state) => state.contributions
+  );
 
   const progress = Math.floor(
     (campaign.currentTotal / campaign.campaignGoal) * 100
@@ -67,7 +70,7 @@ const Progress = (props) => {
     <div className="campaign-progress">
       <div className="campaign-contributions spaced-out">
         <div className="campaign-currentTotal">{`$${campaign.currentTotal} USD`}</div>
-        <div className="campaign-num-contributions">{`${contributionsCount} backers`}</div>
+        <div className="campaign-num-contributions">{`${contributionsCount} contributions`}</div>
       </div>
       <div id="progress-bar">
         <div style={{ width: `${progressBar}%` }}></div>

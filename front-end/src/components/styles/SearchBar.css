@@ -1,0 +1,13 @@
+#search-bar-close {
+  padding: 8px;
+  cursor: pointer;
+  pointer-events: initial;
+}
+/*
+#search-container {
+  width: 100%;
+}
+
+#search-bar {
+  width: 100%;
+} */

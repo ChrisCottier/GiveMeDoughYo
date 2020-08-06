@@ -24,16 +24,21 @@ const asyncHandler = (handler) => (req, res, next) =>
   handler(req, res, next).catch(next);
 
 const hasPerk = (amount, campaign) => {
-  let perk = null;
+  console.log(amount);
+  console.log(campaign);
+  let newPerk = null;
 
   for (let i = 1; i <= 5; i++) {
     let perkCost = `perk${i}Cost`;
     let perk = `perk${i}`;
+    console.log(campaign[perkCost]);
+    console.log(campaign[perk]);
     if (amount > campaign[perkCost] && campaign[perk]) {
-      perk = campaign[perk];
+      newPerk = campaign[perk];
     }
   }
-  return perk;
+
+  return newPerk;
 };
 module.exports = {
   asyncHandler,

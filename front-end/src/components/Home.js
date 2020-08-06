@@ -1,7 +1,9 @@
 import React from "react";
 
+import SearchBar from "./sub-components/Navbar-SearchBar";
+
 const Home = () => {
-  return <div>Home Page</div>;
+  return <main>{/* <SearchBar></SearchBar> */}</main>;
 };
 
 export default Home;
