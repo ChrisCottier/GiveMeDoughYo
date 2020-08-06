@@ -1,6 +1,13 @@
 import { USER_PAGE } from "../actions/users";
 
-import { CAMPAIGN_PAGE } from "../actions/campaigns";
+import {
+  CAMPAIGN_PAGE,
+  SEARCH_PARAMS,
+  CLEAR_SEARCH,
+  MATCHING_CAMPAIGNS,
+  SEARCHING,
+  DONE_SEARCHING,
+} from "../actions/campaigns";
 
 const campaigns = (state = {}, action) => {
   switch (action.type) {
@@ -64,6 +71,43 @@ const campaigns = (state = {}, action) => {
           urlPath,
           daysLeft,
         },
+      };
+    }
+
+    case SEARCH_PARAMS: {
+      return {
+        ...state,
+        currentSearchQuery: action.currentSearchQuery,
+        currentSearchCategory: action.currentSearchCategory,
+      };
+    }
+
+    case CLEAR_SEARCH: {
+      return {
+        ...state,
+        currentSearchCategory: null,
+        currentSearchCategory: null,
+      };
+    }
+
+    case MATCHING_CAMPAIGNS: {
+      return {
+        ...state,
+        campaigns: action.matchingCampaigns,
+      };
+    }
+
+    case SEARCHING: {
+      return {
+        ...state,
+        searching: true,
+      };
+    }
+
+    case DONE_SEARCHING: {
+      return {
+        ...state,
+        searching: false,
       };
     }
 

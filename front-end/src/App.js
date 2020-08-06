@@ -27,7 +27,7 @@ function App() {
         {/* TODO IF ITS EASY ENOUGH CHANGE ROUTE TO /campaigns/:title */}
         <Route exact path="/users/:id" component={User} />
         {/* <Route path="/users/:id/campaigns" component={User} /> */}
-        <Route path="/search/:query" component={Search} />
+        <Route path="/search/:category/:query" component={Search} />
       </Switch>
     </BrowserRouter>
   );
