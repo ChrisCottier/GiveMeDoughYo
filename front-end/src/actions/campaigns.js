@@ -14,6 +14,8 @@ export const getCampaignInfo = (id) => async (dispatch) => {
   if (res.ok) {
     const perks = perksArray(campaignData);
     campaignData.perks = perks;
+    const days = daysLeft(campaignData);
+    campaignData.daysLeft = days;
     campaignData.Contributions = campaignData.Contributions.length;
     campaignData.Follows = campaignData.Follows.length;
 
@@ -38,3 +40,19 @@ const perksArray = (campaignObj) => {
   }
   return perks;
 };
+
+function daysLeft(campaignObj) {
+  const today = new Date();
+  const then = new Date(campaignObj.createdAt);
+  console.log(then);
+  const dif = today.getTime() - then.getTime();
+
+  const difDays = dif / (1000 * 60 * 60 * 24);
+  let days = Math.floor(campaignObj.duration - difDays);
+
+  if (days < 0) {
+    days = 0;
+  }
+
+  return days;
+}

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import campaigns from "../../reducers/campaigns";
+import { useSelector, useDispatch } from "react-redux";
+
+import { submitContribution } from "../../actions/contributions";
 
 export const CampaignPics = (props) => {
   const { campaign } = props;
@@ -73,7 +74,7 @@ const Progress = (props) => {
       </div>
       <div className="campaign-goal spaced-out">
         <div className="campaign-goal-status">{`${progress}% of $${campaign.campaignGoal} goal`}</div>
-        <div className="days-left">{`x days left`}</div>
+        <div className="days-left">{`${campaign.daysLeft} days left`}</div>
       </div>
     </div>
   );
@@ -81,11 +82,25 @@ const Progress = (props) => {
 
 const ContributionModal = (props) => {
   const { showContribution, setShowContribution } = props;
+  const { token } = useSelector((state) => state.auth);
+  const { id, title } = useSelector((state) => state.campaigns.campaign);
+  const { message, successfulContribution } = useSelector(
+    (state) => state.contributions
+  );
   const [contribution, setContribution] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // dispatch(submitContribution(email, password));
+    if (!token) {
+      setErrorMessage("You must be logged in to make a contribution");
+      return;
+    } else if (contribution <= 0) {
+      setErrorMessage("Please write a valid contribtuion amount.");
+      return;
+    }
+    dispatch(submitContribution(contribution, id, title, token));
   };
 
   const handleContribution = (event) => {
@@ -97,6 +112,14 @@ const ContributionModal = (props) => {
     displayType = "none";
   } else {
     displayType = "block";
+  }
+
+  let contributionMessage;
+
+  if (successfulContribution === true) {
+    contributionMessage = message;
+  } else if (successfulContribution === false) {
+    contributionMessage = message;
   }
 
   const modalOff = (event) => {
@@ -119,6 +142,8 @@ const ContributionModal = (props) => {
           <p className="modal-card-title">Make Contribution</p>
         </header>
         <section className="modal-card-body">
+          {errorMessage ? <div>{errorMessage}</div> : <></>}
+          {contributionMessage ? <div>{contributionMessage}</div> : <></>}
           <form onSubmit={handleSubmit}>
             <div className="field">
               <label className="label">Amount</label>
@@ -126,7 +151,6 @@ const ContributionModal = (props) => {
                 <input
                   className="input rounded"
                   type="number"
-                  placeholder="Please type amount"
                   name="contribution"
                   value={contribution}
                   onChange={handleContribution}

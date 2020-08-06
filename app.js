@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const bearerToken = require("express-bearer-token");
 const cors = require("cors");
 
 const { frontendUrl } = require("./config/index");
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({ origin: frontendUrl }));
+app.use(bearerToken());
 
 app.use("/api", router);
 

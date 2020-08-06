@@ -35,6 +35,7 @@ const campaigns = (state = {}, action) => {
         perk5,
         perks,
         urlPath,
+        daysLeft,
       } = action.campaignData;
       return {
         ...state,
@@ -61,6 +62,7 @@ const campaigns = (state = {}, action) => {
           perk5,
           perks,
           urlPath,
+          daysLeft,
         },
       };
     }

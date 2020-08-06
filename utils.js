@@ -23,7 +23,20 @@ const getS3Url = async (key) => {
 const asyncHandler = (handler) => (req, res, next) =>
   handler(req, res, next).catch(next);
 
+const hasPerk = (amount, campaign) => {
+  let perk = null;
+
+  for (let i = 1; i <= 5; i++) {
+    let perkCost = `perk${i}Cost`;
+    let perk = `perk${i}`;
+    if (amount > campaign[perkCost] && campaign[perk]) {
+      perk = campaign[perk];
+    }
+  }
+  return perk;
+};
 module.exports = {
   asyncHandler,
   getS3Url,
+  hasPerk,
 };
