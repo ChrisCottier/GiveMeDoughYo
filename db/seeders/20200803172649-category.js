@@ -37,12 +37,6 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: "Fashion and Wearables",
-        field: "Tech and Innovation",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
         name: "Food and Beverage",
         field: "Tech and Innovation",
         createdAt: new Date(),
@@ -134,12 +128,6 @@ module.exports = {
       },
       {
         name: "Wellness",
-        field: "Community",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: "Human Rights",
         field: "Community",
         createdAt: new Date(),
         updatedAt: new Date(),

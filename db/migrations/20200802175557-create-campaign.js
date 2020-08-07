@@ -11,7 +11,6 @@ module.exports = {
       title: {
         type: Sequelize.STRING(75),
         allowNull: false,
-        unique: true,
       },
       tagline: {
         type: Sequelize.STRING(100),
@@ -55,7 +54,6 @@ module.exports = {
       },
       urlPath: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       perk1Cost: {
         type: Sequelize.INTEGER,

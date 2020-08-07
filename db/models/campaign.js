@@ -48,7 +48,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       urlPath: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       perk1Cost: {
         type: DataTypes.INTEGER,
