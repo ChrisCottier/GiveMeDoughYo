@@ -17,7 +17,6 @@ const Campaign = () => {
   const dispatch = useDispatch();
   const campaign = useSelector((state) => state.campaigns.campaign);
   const user = useSelector((state) => state.users.user);
-  console.log(user);
 
   useEffect(() => {
     dispatch(getCampaignInfo(id));

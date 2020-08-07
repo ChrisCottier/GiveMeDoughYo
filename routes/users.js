@@ -67,17 +67,36 @@ usersRouter.get(
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
 
-    const userData = await User.findByPk(id, {
+    let userData = await User.findByPk(id, {
       include: [
         { model: Campaign },
-        { model: Follow, include: { model: Campaign } },
+        {
+          model: Follow,
+          include: [{ model: Campaign }, { model: User }],
+        },
         { model: Contribution },
       ],
     });
 
+    // console.log(userData);
+
+    for (let follow of userData.Follows) {
+      const { Campaign, User } = follow;
+      let { campaignPic } = Campaign;
+      Campaign.campaignPic = await getS3Url(campaignPic);
+      // const { id, firstName } = User;
+      // follow.User = { id, firstName };
+    }
+
+    for (let campaign of userData.Campaigns) {
+      let { campaignPic } = campaign;
+      campaign.campaignPic = await getS3Url(campaignPic);
+    }
+
     const profilePic = await getS3Url(userData.profilePic);
     userData.profilePic = profilePic;
 
+    console.log(userData.Follows[0]);
     res.json(userData);
   })
 );

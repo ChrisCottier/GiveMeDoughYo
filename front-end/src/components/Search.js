@@ -11,7 +11,6 @@ const Search = () => {
   let { category, query } = useParams();
   const { campaigns } = useSelector((state) => state.campaigns);
   const [filterCategory, setFilterCategory] = useState(category);
-  console.log("filtercategory", filterCategory);
 
   const dispatch = useDispatch();
 

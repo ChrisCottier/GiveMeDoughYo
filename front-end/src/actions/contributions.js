@@ -34,11 +34,11 @@ export const submitContribution = (
 
   if (res.ok) {
     const contribution = await res.json();
-    console.log(contribution);
+
     dispatch(successfulContribution(amount, title));
   } else {
     const fail = await res.json();
-    console.log(fail);
+
     dispatch(failedContribution(amount, title));
   }
 };

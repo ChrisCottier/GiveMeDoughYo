@@ -73,3 +73,44 @@
   font-weight: 900;
   border-bottom: 3px solid #e51075;
 }
+
+.user-campaign-container {
+  border-top: 1px solid lightgray;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.user-campaign-pic {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-right: 15px;
+}
+.user-campaign-details {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: ; */
+}
+
+.user-campaign-tagline {
+  color: gray;
+  font-size: 16px;
+}
+
+.user-campaign-title {
+  margin-bottom: 5px;
+}
+
+.user-campaign-title:hover {
+  color: #e51075;
+}
+
+.user-campaign-creator {
+  margin-top: 10px;
+}
+
+.follows-title {
+  margin-top: 40px;
+}

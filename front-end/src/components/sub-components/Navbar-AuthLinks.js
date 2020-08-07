@@ -17,12 +17,15 @@ export const NavLoggedIn = (props) => {
       <div className="navbar-link">
         <div
           id="profile-avatar"
-          class="is-rounded"
+          className="is-rounded"
           style={{ backgroundImage: `url(${profilePic})` }}
         />
         <span>{firstName}</span>
       </div>
       <div className="navbar-dropdown">
+        <NavLink className="navbar-item" to={`/users/${userId}`}>
+          Profile
+        </NavLink>
         <NavLink to="/" className="navbar-item" onClick={logOut}>
           Log Out
         </NavLink>

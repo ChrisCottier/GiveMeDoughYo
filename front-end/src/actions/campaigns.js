@@ -35,8 +35,6 @@ export const getCampaignInfo = (id) => async (dispatch) => {
     campaignData.Contributions = campaignData.Contributions.length;
     campaignData.Follows = campaignData.Follows.length;
 
-    console.log("data", campaignData);
-
     dispatch(campaignPage(campaignData));
   }
 };
@@ -50,7 +48,7 @@ export const searchFor = (query, category) => async (dispatch) => {
       let days = daysLeft(campaign);
       campaign.daysLeft = days;
     }
-    console.log("successful search", matchingCampaigns);
+
     dispatch(matches(matchingCampaigns));
   }
 };
@@ -74,7 +72,7 @@ function perksArray(campaignObj) {
 function daysLeft(campaignObj) {
   const today = new Date();
   const then = new Date(campaignObj.createdAt);
-  console.log(then);
+
   const dif = today.getTime() - then.getTime();
 
   const difDays = dif / (1000 * 60 * 60 * 24);

@@ -7,9 +7,6 @@ for (let i = 0; i < 1000; i++) {
   string = string + name + "\n";
 }
 
-// console.log(string);
-
 fs.writeFile("user-firstName.txt", string, "utf8", (err) => {
   if (err) throw err;
-  console.log("done");
 });

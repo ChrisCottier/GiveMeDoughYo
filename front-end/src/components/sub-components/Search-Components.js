@@ -13,6 +13,7 @@ export const SearchTile = (props) => {
   if (progress > 100) {
     progressBar = 100;
   }
+  console.log("campaign", campaign);
 
   if (goToCampaign) {
     return <Redirect to={`/campaigns/${campaign.id}`}></Redirect>;
@@ -78,7 +79,6 @@ const CategoryMenu = (props) => {
     <div>
       <div className="search-category-field">{field}</div>
       {categories.map((category) => {
-        console.log(category);
         if (field === category.field) {
           return <div className="search-category-name">{category.name}</div>;
         } else {

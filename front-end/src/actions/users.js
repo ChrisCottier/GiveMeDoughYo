@@ -11,7 +11,12 @@ export const getUserInfo = (id) => async (dispatch) => {
   const res = await fetch(`${baseUrl}/users/${id}`);
   const userData = await res.json();
   if (res.ok) {
+    console.log(userData);
     userData.Contributions = userData.Contributions.length;
+    for (let follow of userData.Follows) {
+      let { id, firstName } = follow.User;
+      follow.User = { id, firstName };
+    }
 
     dispatch(userPage(userData));
   }

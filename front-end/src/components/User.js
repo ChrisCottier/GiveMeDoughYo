@@ -15,6 +15,7 @@ const User = (props) => {
   const { user } = useSelector((state) => state.users);
   const { campaigns } = useSelector((state) => state.campaigns);
   const { contributionsCount } = useSelector((state) => state.contributions);
+  const { follows } = useSelector((state) => state.follows);
   const [profileNav, setProfileNav] = useState("selected-nav");
   const [campaignNav, setCampaignNav] = useState("");
 
@@ -23,7 +24,6 @@ const User = (props) => {
     setCampaignNav("");
 
     const name = event.target.getAttribute("name");
-    console.log(name);
 
     if (name === "profileNav") {
       setProfileNav("selected-nav");
@@ -80,7 +80,15 @@ const User = (props) => {
         ) : (
           <></>
         )}
-        {campaignNav ? <CampaignsView></CampaignsView> : <></>}
+        {campaignNav ? (
+          <CampaignsView
+            user={user}
+            campaigns={campaigns}
+            follows={follows}
+          ></CampaignsView>
+        ) : (
+          <></>
+        )}
         {/* PART 1 PROFILE VIEW */}
         {/* PART 2 CAMPAIGN VIEW */}
       </div>

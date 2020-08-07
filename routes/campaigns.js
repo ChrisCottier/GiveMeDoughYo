@@ -27,7 +27,6 @@ campaignsRouter.get(
 
     const campaignPic = await getS3Url(campaignData.campaignPic);
     campaignData.campaignPic = campaignPic;
-    console.log(campaignData);
 
     res.json(campaignData);
   })
@@ -36,7 +35,6 @@ campaignsRouter.get(
 campaignsRouter.get(
   "/search/:category/:query",
   asyncHandler(async (req, res, next) => {
-    console.log("searching db");
     const { category, query } = req.params;
 
     let matchingCampaigns = [];

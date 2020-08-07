@@ -6,8 +6,7 @@ import { submitContribution } from "../../actions/contributions";
 
 export const CampaignPics = (props) => {
   const { campaign } = props;
-  console.log(campaign);
-  console.log(campaign.campaignPic);
+
   return (
     <div className="campaign-images column is-three-fifths">
       <figure className="image">
@@ -65,7 +64,7 @@ const Progress = (props) => {
   if (progress > 100) {
     progressBar = 100;
   }
-  console.log(progressBar);
+
   return (
     <div className="campaign-progress">
       <div className="campaign-contributions spaced-out">
@@ -229,7 +228,6 @@ export const CampaignPerks = (props) => {
   const { campaign } = props;
   const { perks } = campaign;
 
-  console.log("perks comp", campaign);
   return (
     <div className="column is-one-third">
       <h1 className="campaign-perks-title campaign-bold">Campaign Perks</h1>

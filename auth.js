@@ -25,7 +25,6 @@ const requireAuth = (req, res, next) => {
   //DOES WHAT: this function checks to see if a user has is logged in (has a token). If yes, it will pass on their user instance to req. If not, it will direct the user to login.
   //WHEN TO RUN: When it is necessary to have an authenticated, logged in user for a request.
   //WHERE TO RUN IT: this is a middleware. run it before route.
-  console.log(req.token);
 
   const token = req.token;
 
@@ -68,7 +67,6 @@ const loggedInUser = (req, res, next) => {
   //a user's songs page, we would run this and see if the person is logged in and the owner. if yes, we'd add links to edit account, or edit/add songs page(s).
   //WHERE TO RUN IT: it's a middleware, run before rendering pug to see if we need to render certain options/links for user.
   const { token } = req;
-  console.log("TOKENNNNNNNNNNNNNNNNNNNNNNNNNNNN", token);
 
   if (!token) {
     req.user = null;
@@ -82,14 +80,12 @@ const loggedInUser = (req, res, next) => {
       return next(err);
     }
 
-    console.log("JWTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", jwtPayload);
     const { id } = jwtPayload.data;
 
     try {
       const user = await User.findByPk(id);
       if (user !== null) {
         req.user = user;
-        console.log("user attached");
       }
     } catch (err) {
       return next(err);

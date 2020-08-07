@@ -14,7 +14,6 @@ const SearchBar = () => {
   const searchQuery = (event) => {
     event.preventDefault();
 
-    console.log("move to search page");
     dispatch(setSearching());
   };
 
