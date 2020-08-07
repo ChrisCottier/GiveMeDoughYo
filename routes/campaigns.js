@@ -55,10 +55,12 @@ campaignsRouter.get(
             },
           },
         },
+        limit: 40,
       });
       for (let campaign of matchingCampaigns) {
         let campaignPic = await getS3Url(campaign.campaignPic);
         campaign.campaignPic = campaignPic;
+        campaign.story = null;
       }
     } else {
     }

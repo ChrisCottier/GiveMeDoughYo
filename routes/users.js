@@ -38,6 +38,7 @@ usersRouter.post(
       where: {
         email,
       },
+      include: { model: Follow },
     });
 
     let validPassword = false;
@@ -55,9 +56,9 @@ usersRouter.post(
     } else {
       const token = generateUserToken(user);
 
-      let { userId, firstName, profilePic } = user;
+      let { userId, firstName, profilePic, Follows } = user;
       profilePic = await getS3Url(profilePic);
-      res.json({ userId, token, firstName, profilePic });
+      res.json({ userId, token, firstName, profilePic, Follows });
     }
   })
 );
@@ -106,9 +107,9 @@ usersRouter.get(
   loggedInUser,
   asyncHandler(async (req, res, next) => {
     if (req.user) {
-      let { id, firstName, email, profilePic } = req.user;
+      let { id, firstName, email, profilePic, Follows } = req.user;
       profilePic = await getS3Url(profilePic);
-      res.json({ id, firstName, email, profilePic });
+      res.json({ id, firstName, email, profilePic, Follows });
     } else {
       res.json(null);
     }

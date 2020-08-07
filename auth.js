@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { jwtConfig } = require("./config");
 const { secret, expiresIn } = jwtConfig;
-const { User } = require("./db/models");
+const { User, Follow } = require("./db/models");
 
 const generateUserToken = (user) => {
   //DOES WHAT: generates a token for a user
@@ -83,7 +83,7 @@ const loggedInUser = (req, res, next) => {
     const { id } = jwtPayload.data;
 
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(id, { include: { model: Follow } });
       if (user !== null) {
         req.user = user;
       }

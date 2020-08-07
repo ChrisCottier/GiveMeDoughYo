@@ -65,7 +65,7 @@ fs.writeFile("campaign-duration.txt", string, "utf8", (err) => {
 
 string = "";
 for (let i = 0; i < 1000; i++) {
-  let name = faker.lorem.paragraph();
+  let name = faker.random.words(800);
   string = string + `\`${name}\`,` + "\n";
 }
 

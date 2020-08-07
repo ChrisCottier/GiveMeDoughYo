@@ -4,12 +4,13 @@ export const ACCESS_TOKEN = "ACCESS_TOKEN";
 export const SET_TOKEN = "SET_TOKEN";
 export const REMOVE_TOKEN = "REMOVE_TOKEN";
 
-export const setToken = (token, userId, firstName, profilePic) => ({
+export const setToken = (token, userId, firstName, profilePic, follows) => ({
   type: SET_TOKEN,
   token,
   userId,
   firstName,
   profilePic,
+  follows,
 });
 
 export const removeToken = () => ({
@@ -24,9 +25,16 @@ export const submitLogin = (email, password) => async (dispatch) => {
   });
 
   if (res.ok) {
-    const { token, userId, firstName, profilePic } = await res.json();
+    const {
+      token,
+      userId,
+      firstName,
+      profilePic,
+      Follows: follows,
+    } = await res.json();
     document.cookie = `${ACCESS_TOKEN}=${token}`;
-    dispatch(setToken(token, userId, firstName, profilePic));
+    console.log("login", follows);
+    dispatch(setToken(token, userId, firstName, profilePic, follows));
   }
 };
 
@@ -63,10 +71,10 @@ export const hasAccessToken = () => async (dispatch) => {
 
   if (res.ok) {
     const details = await res.json();
-    const { id, email, firstName, profilePic } = details;
+    const { id, email, firstName, profilePic, Follows: follows } = details;
     const userId = id;
     if (details.id) {
-      dispatch(setToken(token, userId, firstName, profilePic));
+      dispatch(setToken(token, userId, firstName, profilePic, follows));
     }
   }
 };

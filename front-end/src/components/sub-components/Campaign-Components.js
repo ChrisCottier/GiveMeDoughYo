@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { submitContribution } from "../../actions/contributions";
+import { submitFollow } from "../../actions/follows";
 
 export const CampaignPics = (props) => {
   const { campaign } = props;
@@ -187,9 +188,37 @@ const ContributionModal = (props) => {
 
 const CampaignStatusButtons = () => {
   const [showContribution, setShowContribution] = useState(false);
+  const { id } = useParams();
+  const [cantFollow, setCantFollow] = useState(false);
+  const { follows, token, userId, followStatus } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+  const [following, setFollowing] = useState(false);
+
+  useEffect(() => {
+    console.log("following1", following, "follows", follows, typeof id);
+    if (!follows) return;
+    console.log("passed return check");
+    if (userFollowsCampaign(follows, followStatus, Number.parseInt(id))) {
+      setFollowing(true);
+      console.log("following2", following);
+    } else {
+      setFollowing(false);
+    }
+  }, [followStatus, follows]);
+  console.log("following3", following);
 
   const showModal = () => {
     setShowContribution(true);
+  };
+
+  const toggleFollow = () => {
+    if (!token) {
+      setCantFollow(true);
+      return;
+    }
+    dispatch(submitFollow(userId, id, token));
   };
   return (
     <>
@@ -202,9 +231,17 @@ const CampaignStatusButtons = () => {
           {" "}
           BACK IT
         </button>
-        <button id="campaign-follow" className="button is-focused ">
-          <i className="far fa-heart follow-heart"></i>
-          <span>FOLLOW</span>
+        <button
+          id="campaign-follow"
+          className="button is-focused "
+          onClick={toggleFollow}
+        >
+          {following ? (
+            <i className="fas fa-heart follow-heart"></i>
+          ) : (
+            <i className="far fa-heart follow-heart"></i>
+          )}
+          <span>{following ? "FOLLOWING" : "FOLLOW"}</span>
         </button>
       </div>
       <ContributionModal
@@ -247,4 +284,27 @@ export const CampaignPerks = (props) => {
       </div>
     </div>
   );
+};
+
+const userFollowsCampaign = (followsArr, followStatus, campaignId) => {
+  let following = false;
+  for (let follow of followsArr) {
+    if (follow.campaignId === campaignId) {
+      following = true;
+    }
+  }
+  console.log("follow status", followStatus);
+
+  if (followStatus) {
+    if (
+      Number.parseInt(followStatus.campaignId) === campaignId &&
+      followStatus.followStatus === true
+    ) {
+      following = true;
+    }
+  }
+
+  console.log(following);
+
+  return following;
 };
