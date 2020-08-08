@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 
 import "./styles/User.css";
 import { getUserInfo } from "../actions/users";
@@ -16,6 +16,7 @@ const User = (props) => {
   const { campaigns } = useSelector((state) => state.campaigns);
   const { contributions } = useSelector((state) => state.contributions);
   const { follows } = useSelector((state) => state.follows);
+  const { userId } = useSelector((state) => state.auth);
   const [profileNav, setProfileNav] = useState("selected-nav");
   const [campaignNav, setCampaignNav] = useState("");
 
@@ -38,6 +39,10 @@ const User = (props) => {
 
   if (!user || !campaigns) {
     return null;
+  }
+
+  if (userId === user.id) {
+    return <Redirect to="/profile"></Redirect>;
   }
   return (
     <main>

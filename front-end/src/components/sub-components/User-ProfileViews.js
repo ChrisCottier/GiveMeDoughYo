@@ -27,6 +27,14 @@ export const UserProfileView = (props) => {
             <span className="user-stat-num">{contributionsCount}</span>{" "}
             <span className="user-stat-category"> Contributions</span>
           </div>
+          {user.balance ? (
+            <div>
+              <span className="user-stat-num">{`$${user.balance}`}</span>{" "}
+              <span className="user-stat-category"> Balance</span>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
@@ -42,14 +50,18 @@ export const CampaignsView = (props) => {
       <div className="user-campaigns">
         {campaigns.map((campaign) => {
           return (
-            <UserCampaigns user={user} campaign={campaign}></UserCampaigns>
+            <UserCampaigns
+              key={campaign.id}
+              user={user}
+              campaign={campaign}
+            ></UserCampaigns>
           );
         })}
       </div>
       <h1 className="title is-3 follows-title">Campaigns I'm Following</h1>
       <div className="user-campaigns">
         {follows.map((follow) => {
-          return <UserFollows follow={follow}></UserFollows>;
+          return <UserFollows key={follow.id} follow={follow}></UserFollows>;
         })}
       </div>
     </div>
@@ -106,6 +118,48 @@ const UserFollows = (props) => {
           <NavLink to={`/users/${user.id}`}>{user.firstName}</NavLink>
         </h2>
         <div className="user-campaign-tagline">{campaign.tagline}</div>
+      </div>
+    </div>
+  );
+};
+
+export const ContributionsView = (props) => {
+  const { contributions } = props;
+  return (
+    <div className="user-contributions-container">
+      <h1 className="title is-3 user-contributions-title">My Contributions</h1>
+      <div className="user-contributions-table">
+        <header className="user-contributions-row user-contributions-header">
+          <div className="user-contributions-col1">Date</div>
+          <div className="user-contributions-col2">Campaign</div>
+          <div className="user-contributions-col3">Amount</div>
+          <div className="user-contributions-col4">Perk</div>
+        </header>
+        {contributions.map((contribution) => {
+          const { Campaign: campaign } = contribution;
+          console.log(typeof contribution.createdAt);
+          return (
+            <div key={contribution.id} className="user-contributions-row">
+              <div className="user-contributions-col1">
+                {contribution.createdAt.slice(0, 10)}
+              </div>
+              <div className="user-contributions-col2 user-contibutions-campaign">
+                <NavLink
+                  to={`/campaigns/${campaign.id}`}
+                  className="contribution-campaign-pic"
+                  style={{ backgroundImage: `url(${campaign.campaignPic})` }}
+                ></NavLink>
+                <NavLink to={`/campaigns/${campaign.id}`}>
+                  {campaign.title}
+                </NavLink>
+              </div>
+              <div className="user-contributions-col3">
+                ${contribution.amount}
+              </div>
+              <div className="user-contributions-col4">{contribution.perk}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

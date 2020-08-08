@@ -18,6 +18,8 @@ export const getUserInfo = (id) => async (dispatch) => {
       follow.User = { id, firstName };
     }
 
+    userData.balance = null;
+
     dispatch(userPage(userData));
   }
 };

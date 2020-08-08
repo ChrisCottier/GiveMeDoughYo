@@ -114,3 +114,53 @@
 .follows-title {
   margin-top: 40px;
 }
+
+.user-contributions-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-contributions-row {
+  display: grid;
+  grid-template-rows: 60px;
+  grid-template-columns: repeat(25, 1fr);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  align-items: center;
+}
+
+.user-contributions-col1 {
+  grid-area: 1/1 / span1/span5;
+}
+
+.user-contributions-col2 {
+  grid-area: 1/6 / span1/span12;
+}
+
+.user-contributions-col3 {
+  grid-area: 1/17 / span1/span3;
+}
+
+.user-contributions-col4 {
+  grid-area: 1/20 / span1/span5;
+}
+
+.user-contributions-header div {
+  font-weight: 700;
+}
+
+.user-contibutions-campaign {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 20px;
+}
+
+.contribution-campaign-pic {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-right: 15px;
+}

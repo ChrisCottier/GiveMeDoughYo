@@ -4,7 +4,7 @@
 /* https://fonts.google.com/specimen/Varela+Round?sidebar.open=true&selection.family=Varela+Round */
 
 main {
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .modal-background {
@@ -17,4 +17,8 @@ main {
 
 .logo.navbar-brand {
   padding-top: 10px;
+}
+
+a {
+  color: #e51075;
 }

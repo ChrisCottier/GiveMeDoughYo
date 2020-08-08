@@ -41,7 +41,11 @@ export const SearchTile = (props) => {
         </div>
         <div className="title is-4">{campaign.title}</div>
         <div className="card-tagline subtitle is-6">{campaign.tagline}</div>
-        <div className="card-category">{campaign.Category.name}</div>
+        {campaign.Category ? (
+          <div className="card-category">{campaign.Category.name}</div>
+        ) : (
+          <></>
+        )}
         <div className="card-progress">
           <div className="fund-follow card-apart">
             <div>

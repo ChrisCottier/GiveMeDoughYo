@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
+.search-tile:hover {
+  box-shadow: 0px 0px 10px #e51075;
+}
+
 .fund-follow {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -94,6 +98,7 @@
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em;
 }
 
 .search-tile-pic {

@@ -112,14 +112,14 @@ usersRouter.get(
           model: Follow,
           include: [{ model: Campaign }, { model: User }],
         },
-        { model: Contribution },
+        { model: Contribution, include: { model: Campaign } },
       ],
     });
 
     // console.log(userData);
 
     for (let follow of userData.Follows) {
-      const { Campaign, User } = follow;
+      const { Campaign } = follow;
       let { campaignPic } = Campaign;
       Campaign.campaignPic = await getS3Url(campaignPic);
     }
@@ -127,6 +127,12 @@ usersRouter.get(
     for (let campaign of userData.Campaigns) {
       let { campaignPic } = campaign;
       campaign.campaignPic = await getS3Url(campaignPic);
+    }
+
+    for (let contribution of userData.Contributions) {
+      const { Campaign } = contribution;
+      let { campaignPic } = Campaign;
+      Campaign.campaignPic = await getS3Url(campaignPic);
     }
 
     const profilePic = await getS3Url(userData.profilePic);

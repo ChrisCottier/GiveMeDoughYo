@@ -7,6 +7,7 @@ import { getProfileInfo } from "../actions/users";
 import {
   UserProfileView,
   CampaignsView,
+  ContributionsView,
 } from "./sub-components/User-ProfileViews";
 
 const Profile = (props) => {
@@ -14,14 +15,16 @@ const Profile = (props) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
   const { campaigns } = useSelector((state) => state.campaigns);
-  const contributions = useSelector((state) => state.contributions);
+  const { contributions } = useSelector((state) => state.contributions);
   const { follows } = useSelector((state) => state.follows);
   const [profileNav, setProfileNav] = useState("selected-nav");
   const [campaignNav, setCampaignNav] = useState("");
+  const [contributionNav, setContributionNav] = useState("");
 
   const handleNav = (event) => {
     setProfileNav("");
     setCampaignNav("");
+    setContributionNav("");
 
     const name = event.target.getAttribute("name");
 
@@ -29,6 +32,8 @@ const Profile = (props) => {
       setProfileNav("selected-nav");
     } else if (name === "campaignNav") {
       setCampaignNav("selected-nav");
+    } else if (name === "contributionNav") {
+      setContributionNav("selected-nav");
     }
   };
 
@@ -41,7 +46,8 @@ const Profile = (props) => {
     return null;
   }
 
-  console.log(contributions);
+  // console.log("contributions", contributions);
+
   return (
     <main>
       <div className="user-page-container container is-widescreen">
@@ -71,6 +77,13 @@ const Profile = (props) => {
               >
                 Campaigns
               </a>
+              <a
+                className={`navbar-item is-link ${contributionNav}`}
+                name="contributionNav"
+                onClick={handleNav}
+              >
+                Contributions
+              </a>
             </div>
           </nav>
         </header>
@@ -78,7 +91,7 @@ const Profile = (props) => {
           <UserProfileView
             user={user}
             campaigns={campaigns}
-            contributionsCount={contributions.contributionsCount}
+            contributionsCount={contributions.length}
           ></UserProfileView>
         ) : (
           <></>
@@ -89,6 +102,14 @@ const Profile = (props) => {
             campaigns={campaigns}
             follows={follows}
           ></CampaignsView>
+        ) : (
+          <></>
+        )}
+        {contributionNav ? (
+          <ContributionsView
+            user={user}
+            contributions={contributions}
+          ></ContributionsView>
         ) : (
           <></>
         )}

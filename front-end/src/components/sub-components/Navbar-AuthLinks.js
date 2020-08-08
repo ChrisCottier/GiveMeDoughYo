@@ -23,7 +23,7 @@ export const NavLoggedIn = (props) => {
         <span>{firstName}</span>
       </div>
       <div className="navbar-dropdown">
-        <NavLink className="navbar-item" to={`/users/${userId}`}>
+        <NavLink className="navbar-item" to={`/profile`}>
           Profile
         </NavLink>
         <NavLink to="/" className="navbar-item" onClick={logOut}>

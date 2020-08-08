@@ -14,6 +14,7 @@ const users = (state = {}, action) => {
         id,
         shortDescription,
         stateProvince,
+        balance,
       } = action.userData;
       return {
         ...state,
@@ -27,6 +28,7 @@ const users = (state = {}, action) => {
           id,
           shortDescription,
           stateProvince,
+          balance,
         },
       };
     }
