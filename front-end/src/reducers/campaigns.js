@@ -5,6 +5,7 @@ import {
   MATCHING_CAMPAIGNS,
   SEARCHING,
   DONE_SEARCHING,
+  CREATE_CAMPAIGN,
 } from "../actions/campaigns";
 
 const campaigns = (state = {}, action) => {
@@ -13,6 +14,13 @@ const campaigns = (state = {}, action) => {
       return {
         ...state,
         campaigns: action.userData.Campaigns,
+      };
+    }
+
+    case CREATE_CAMPAIGN: {
+      return {
+        ...state,
+        successfulUpload: action.successfulUpload,
       };
     }
 

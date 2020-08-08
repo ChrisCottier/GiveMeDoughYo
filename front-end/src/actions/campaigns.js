@@ -4,6 +4,7 @@ export const CAMPAIGN_PAGE = "CAMPAIGN_PAGE";
 export const SEARCHING = "SEARCHING";
 export const DONE_SEARCHING = "DONE_SEARCHING";
 export const MATCHING_CAMPAIGNS = "MATCHING_CAMPAIGNS";
+export const CREATE_CAMPAIGN = "CREATE_CAMPAIGN";
 
 const campaignPage = (campaignData) => ({
   type: CAMPAIGN_PAGE,
@@ -50,6 +51,46 @@ export const searchFor = (query, category) => async (dispatch) => {
     }
 
     dispatch(matches(matchingCampaigns));
+  }
+};
+
+export const submitCampaign = (campaign, campaignPic, token) => async (
+  dispatch
+) => {
+  console.log(campaign);
+  const res = await fetch(`${baseUrl}/campaigns`, {
+    method: "post",
+
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({ campaign }),
+  });
+
+  if (res.ok) {
+    const campaign = await res.json();
+    if (campaignPic) {
+      console.log(campaignPic);
+      const data = new FormData();
+      data.append("campaignPic", campaignPic);
+      const res = await fetch(
+        `${baseUrl}/campaigns/${campaign.id}/campaignPic`,
+        {
+          method: "post",
+
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+          body: data,
+        }
+      );
+      const updatedCampaign = await res.json();
+      console.log("updated", updatedCampaign);
+      dispatch({ type: CREATE_CAMPAIGN, successfulUpload: true });
+    } else {
+      dispatch({ type: CREATE_CAMPAIGN, successfulUpload: false });
+    }
   }
 };
 

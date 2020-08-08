@@ -41,4 +41,5 @@ module.exports = {
   asyncHandler,
   getS3Url,
   hasPerk,
+  S3,
 };
