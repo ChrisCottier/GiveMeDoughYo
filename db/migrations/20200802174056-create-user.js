@@ -46,6 +46,7 @@ module.exports = {
       },
       profilePic: {
         type: Sequelize.STRING,
+        defaultValue: "default-profile-pic.png",
       },
       createdAt: {
         allowNull: false,

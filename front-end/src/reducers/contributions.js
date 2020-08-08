@@ -10,7 +10,7 @@ const contributions = (state = {}, action) => {
     case USER_PAGE: {
       return {
         ...state,
-        contributionsCount: action.userData.Contributions,
+        contributions: action.userData.Contributions,
       };
     }
     case CAMPAIGN_PAGE: {

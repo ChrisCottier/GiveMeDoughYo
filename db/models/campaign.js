@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       campaignPic: {
         type: DataTypes.STRING,
-        allowNull: false,
+        defaultValue: "default-campaign-pic.png",
       },
       otherPics: {
         type: DataTypes.ARRAY(DataTypes.STRING),

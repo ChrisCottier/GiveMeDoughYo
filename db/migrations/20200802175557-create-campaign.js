@@ -32,7 +32,7 @@ module.exports = {
       },
       campaignPic: {
         type: Sequelize.STRING,
-        allowNull: false,
+        defaultValue: "default-campaign-pic.png",
       },
       otherPics: {
         type: Sequelize.ARRAY(Sequelize.STRING),

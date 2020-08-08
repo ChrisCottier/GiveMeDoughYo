@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 
 import "./styles/User.css";
-import { getUserInfo } from "../actions/users";
+import { getProfileInfo } from "../actions/users";
 import {
   UserProfileView,
   CampaignsView,
 } from "./sub-components/User-ProfileViews";
 
-const User = (props) => {
-  const { id } = useParams();
+const Profile = (props) => {
+  const { token, userId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
   const { campaigns } = useSelector((state) => state.campaigns);
-  const { contributions } = useSelector((state) => state.contributions);
+  const contributions = useSelector((state) => state.contributions);
   const { follows } = useSelector((state) => state.follows);
   const [profileNav, setProfileNav] = useState("selected-nav");
   const [campaignNav, setCampaignNav] = useState("");
@@ -33,12 +33,15 @@ const User = (props) => {
   };
 
   useEffect(() => {
-    dispatch(getUserInfo(id));
-  }, [id]);
+    if (!userId || !token) return;
+    dispatch(getProfileInfo(userId, token));
+  }, [userId]);
 
   if (!user || !campaigns) {
     return null;
   }
+
+  console.log(contributions);
   return (
     <main>
       <div className="user-page-container container is-widescreen">
@@ -75,7 +78,7 @@ const User = (props) => {
           <UserProfileView
             user={user}
             campaigns={campaigns}
-            contributionsCount={contributions}
+            contributionsCount={contributions.contributionsCount}
           ></UserProfileView>
         ) : (
           <></>
@@ -96,4 +99,4 @@ const User = (props) => {
   );
 };
 
-export default User;
+export default Profile;

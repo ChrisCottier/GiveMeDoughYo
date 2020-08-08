@@ -49,6 +49,7 @@ export const submitSignUp = (firstName, lastName, email, password) => async (
 
   if (res.ok) {
     const { token, userId, firstName, profilePic } = await res.json();
+
     document.cookie = `${ACCESS_TOKEN}=${token}`;
     dispatch(setToken(token, userId, firstName, profilePic));
   }

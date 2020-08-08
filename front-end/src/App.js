@@ -11,6 +11,7 @@ import User from "./components/User";
 import Campaign from "./components/Campaign";
 import Search from "./components/Search";
 import Navbar from "./components/Navbar";
+import Profile from "./components/Profile";
 import { hasAccessToken } from "./actions/auth";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <Route path="/campaigns/:id" component={Campaign} />
         {/* TODO IF ITS EASY ENOUGH CHANGE ROUTE TO /campaigns/:title */}
         <Route exact path="/users/:id" component={User} />
-        {/* <Route path="/users/:id/campaigns" component={User} /> */}
+        <Route path="/profile" component={Profile} />
         <Route path="/search/:category/:query" component={Search} />
       </Switch>
     </BrowserRouter>
