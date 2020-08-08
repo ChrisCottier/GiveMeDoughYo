@@ -26,6 +26,12 @@ export const NavLoggedIn = (props) => {
         <NavLink className="navbar-item" to={`/profile`}>
           Profile
         </NavLink>
+        <NavLink className="navbar-item" to={`/profile/campaigns`}>
+          My Campaigns
+        </NavLink>
+        <NavLink className="navbar-item" to={`/profile/contributions`}>
+          My Contributions
+        </NavLink>
         <NavLink to="/" className="navbar-item" onClick={logOut}>
           Log Out
         </NavLink>

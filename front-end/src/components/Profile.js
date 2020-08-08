@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 
 import "./styles/User.css";
+import Home from "./Home";
 import { getProfileInfo } from "../actions/users";
 import {
   UserProfileView,
@@ -11,12 +12,14 @@ import {
 } from "./sub-components/User-ProfileViews";
 
 const Profile = (props) => {
-  const { token, userId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { view } = useParams();
+  const { token, userId } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.users);
   const { campaigns } = useSelector((state) => state.campaigns);
   const { contributions } = useSelector((state) => state.contributions);
   const { follows } = useSelector((state) => state.follows);
+
   const [profileNav, setProfileNav] = useState("selected-nav");
   const [campaignNav, setCampaignNav] = useState("");
   const [contributionNav, setContributionNav] = useState("");
@@ -40,10 +43,19 @@ const Profile = (props) => {
   useEffect(() => {
     if (!userId || !token) return;
     dispatch(getProfileInfo(userId, token));
+
+    console.log(view);
+    if (view === "campaigns") {
+      setProfileNav("");
+      setCampaignNav("selected-nav");
+    } else if (view === "contributions") {
+      setProfileNav("");
+      setContributionNav("selected-nav");
+    }
   }, [userId]);
 
   if (!user || !campaigns) {
-    return null;
+    return <Home></Home>;
   }
 
   // console.log("contributions", contributions);

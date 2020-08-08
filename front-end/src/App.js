@@ -12,6 +12,7 @@ import Campaign from "./components/Campaign";
 import Search from "./components/Search";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
+import CreateCampaign from "./components/CreateCampaign";
 import { hasAccessToken } from "./actions/auth";
 
 function App() {
@@ -24,10 +25,12 @@ function App() {
       <Navbar></Navbar>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/create-campaign" component={CreateCampaign} />
         <Route path="/campaigns/:id" component={Campaign} />
         {/* TODO IF ITS EASY ENOUGH CHANGE ROUTE TO /campaigns/:title */}
         <Route exact path="/users/:id" component={User} />
-        <Route path="/profile" component={Profile} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:view" component={Profile} />
         <Route path="/search/:category/:query" component={Search} />
       </Switch>
     </BrowserRouter>

@@ -72,7 +72,7 @@ const Navbar = () => {
               Sign Up
               */}
             <div className="navbar-item">
-              <NavLink to="/" className="start-campaign">
+              <NavLink to="/create-campaign" className="start-campaign">
                 Start A Campaign
               </NavLink>
             </div>
