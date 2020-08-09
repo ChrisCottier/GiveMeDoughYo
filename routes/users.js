@@ -79,8 +79,6 @@ usersRouter.get(
       ],
     });
 
-    // console.log(userData);
-
     for (let follow of userData.Follows) {
       const { Campaign, User } = follow;
       let { campaignPic } = Campaign;
@@ -115,8 +113,6 @@ usersRouter.get(
         { model: Contribution, include: { model: Campaign } },
       ],
     });
-
-    // console.log(userData);
 
     for (let follow of userData.Follows) {
       const { Campaign } = follow;

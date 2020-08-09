@@ -7,7 +7,11 @@ export const UserProfileView = (props) => {
   return (
     <div className="profile-container columns">
       <article className="profile-left column is-three-fifths">
-        <img className="profilePic" src={user.profilePic}></img>
+        <img
+          className="profilePic"
+          src={user.profilePic}
+          alt="User's profile pic"
+        ></img>
         <div className="user-short-description">{user.shortDescription}</div>
         <p>{user.aboutMe}</p>
       </article>
@@ -15,7 +19,11 @@ export const UserProfileView = (props) => {
 
       <div className="profile-right column is-one-third">
         <div className="about-me">
-          <img className="avatar user-page-avatar" src={user.profilePic}></img>
+          <img
+            className="avatar user-page-avatar"
+            src={user.profilePic}
+            alt="User's avatar"
+          ></img>
           <h3 className="profile-header">About Me</h3>
         </div>
         <div className="user-stats">
@@ -43,7 +51,7 @@ export const UserProfileView = (props) => {
 
 export const CampaignsView = (props) => {
   const { user, campaigns, follows } = props;
-  console.log(campaigns);
+
   return (
     <div className="user-campaigns-container">
       <h1 className="title is-3 ">Campaigns I'm On</h1>
@@ -137,7 +145,6 @@ export const ContributionsView = (props) => {
         </header>
         {contributions.map((contribution) => {
           const { Campaign: campaign } = contribution;
-          console.log(typeof contribution.createdAt);
           return (
             <div key={contribution.id} className="user-contributions-row">
               <div className="user-contributions-col1">

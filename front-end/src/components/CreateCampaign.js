@@ -64,7 +64,6 @@ const CreateCampaign = () => {
   };
 
   const handleChange = (event) => {
-    console.log(event.target.name);
     switch (event.target.name) {
       case "title": {
         setTitle(event.target.value);
@@ -84,7 +83,6 @@ const CreateCampaign = () => {
         return;
       }
       case "campaignPic": {
-        console.log("file", event.target.files[0]);
         setCampaignPic(event.target.files[0]);
         return;
       }
@@ -146,8 +144,6 @@ const CreateCampaign = () => {
   //     alert("Upload unsuccessful");
   //   }
 
-  console.log(categoryId);
-  console.log(campaignPic);
   if (!categories) {
     return null;
   }

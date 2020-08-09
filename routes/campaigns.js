@@ -77,8 +77,6 @@ campaignsRouter.post(
   "/",
   requireAuth,
   asyncHandler(async (req, res, next) => {
-    console.log("posting");
-
     const { campaign } = req.body;
 
     campaign.createdAt = new Date();
@@ -94,7 +92,6 @@ campaignsRouter.post(
       }
     }
     const newCampaign = await Campaign.create(campaign);
-    console.log(newCampaign);
 
     res.json(newCampaign);
   })
@@ -105,8 +102,6 @@ const upload = multer({
     s3: S3,
     bucket: "indiegogo-clone",
     key: function (req, file, cb) {
-      console.log(req);
-      console.log(file);
       cb(null, `${new Date()}${file.originalname}`);
     },
   }),
@@ -117,12 +112,9 @@ campaignsRouter.post(
   requireAuth,
   upload.single("campaignPic"),
   asyncHandler(async (req, res, next) => {
-    console.log(req.file);
     const { id } = req.params;
-    console.log(id);
 
     if (!req.file.key) {
-      console.log("failed upload");
       res.json("ow");
     }
 

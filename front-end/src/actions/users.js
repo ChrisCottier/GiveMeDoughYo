@@ -11,7 +11,6 @@ export const getUserInfo = (id) => async (dispatch) => {
   const res = await fetch(`${baseUrl}/users/${id}`);
   if (res.ok) {
     const userData = await res.json();
-    console.log(userData);
     userData.Contributions = userData.Contributions.length;
     for (let follow of userData.Follows) {
       let { id, firstName } = follow.User;
@@ -33,7 +32,6 @@ export const getProfileInfo = (id, token) => async (dispatch) => {
   });
   if (res.ok) {
     const userData = await res.json();
-    console.log(userData);
 
     for (let follow of userData.Follows) {
       let { id, firstName } = follow.User;

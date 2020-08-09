@@ -44,7 +44,6 @@ const Profile = (props) => {
     if (!userId || !token) return;
     dispatch(getProfileInfo(userId, token));
 
-    console.log(view);
     if (view === "campaigns") {
       setProfileNav("");
       setCampaignNav("selected-nav");
@@ -52,13 +51,11 @@ const Profile = (props) => {
       setProfileNav("");
       setContributionNav("selected-nav");
     }
-  }, [userId]);
+  }, [userId, view]);
 
   if (!user || !campaigns) {
     return <Home></Home>;
   }
-
-  // console.log("contributions", contributions);
 
   return (
     <main>

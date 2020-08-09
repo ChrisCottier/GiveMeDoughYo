@@ -11,7 +11,11 @@ export const CampaignPics = (props) => {
   return (
     <div className="campaign-images column is-three-fifths">
       <figure className="image">
-        <img className="campaign-pic" src={campaign.campaignPic}></img>
+        <img
+          className="campaign-pic"
+          src={campaign.campaignPic}
+          alt="Campaign pic"
+        ></img>
       </figure>
       <div className="tile is-ancestor other-pics">
         <div className="tile is-parent is-1 other-pic">
@@ -197,17 +201,13 @@ const CampaignStatusButtons = () => {
   const [following, setFollowing] = useState(false);
 
   useEffect(() => {
-    console.log("following1", following, "follows", follows, typeof id);
     if (!follows) return;
-    console.log("passed return check");
     if (userFollowsCampaign(follows, followStatus, Number.parseInt(id))) {
       setFollowing(true);
-      console.log("following2", following);
     } else {
       setFollowing(false);
     }
   }, [followStatus, follows]);
-  console.log("following3", following);
 
   const showModal = () => {
     setShowContribution(true);
@@ -293,7 +293,6 @@ const userFollowsCampaign = (followsArr, followStatus, campaignId) => {
       following = true;
     }
   }
-  console.log("follow status", followStatus);
 
   if (followStatus) {
     if (
@@ -303,8 +302,6 @@ const userFollowsCampaign = (followsArr, followStatus, campaignId) => {
       following = true;
     }
   }
-
-  console.log(following);
 
   return following;
 };

@@ -33,7 +33,6 @@ export const submitLogin = (email, password) => async (dispatch) => {
       Follows: follows,
     } = await res.json();
     document.cookie = `${ACCESS_TOKEN}=${token}`;
-    console.log("login", follows);
     dispatch(setToken(token, userId, firstName, profilePic, follows));
   }
 };

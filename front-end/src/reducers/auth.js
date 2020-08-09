@@ -3,7 +3,6 @@ import { NEW_FOLLOW } from "../actions/follows";
 const auth = (state = {}, action) => {
   switch (action.type) {
     case SET_TOKEN: {
-      console.log("set token", action);
       return {
         ...state,
         token: action.token,

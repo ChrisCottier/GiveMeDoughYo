@@ -57,7 +57,6 @@ export const searchFor = (query, category) => async (dispatch) => {
 export const submitCampaign = (campaign, campaignPic, token) => async (
   dispatch
 ) => {
-  console.log(campaign);
   const res = await fetch(`${baseUrl}/campaigns`, {
     method: "post",
 
@@ -71,7 +70,6 @@ export const submitCampaign = (campaign, campaignPic, token) => async (
   if (res.ok) {
     const campaign = await res.json();
     if (campaignPic) {
-      console.log(campaignPic);
       const data = new FormData();
       data.append("campaignPic", campaignPic);
       const res = await fetch(
@@ -86,7 +84,6 @@ export const submitCampaign = (campaign, campaignPic, token) => async (
         }
       );
       const updatedCampaign = await res.json();
-      console.log("updated", updatedCampaign);
       dispatch({ type: CREATE_CAMPAIGN, successfulUpload: true });
     } else {
       dispatch({ type: CREATE_CAMPAIGN, successfulUpload: false });
