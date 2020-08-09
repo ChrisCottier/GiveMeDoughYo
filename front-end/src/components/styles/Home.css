@@ -1,0 +1,47 @@
+.splash-page {
+  margin-top: 60px;
+}
+
+.home-banner {
+  width: 100vw;
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.banner-carousel {
+  height: 400px;
+}
+
+.splash-container {
+  position: relative;
+}
+
+.banner-word-overlay {
+  position: absolute;
+  top: 30%;
+  right: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner-title {
+  font-family: "Varela Round", sans-serif;
+  font-size: 80px;
+}
+
+.motto {
+  font-size: 30px;
+  font-family: "Varela Round", sans-serif;
+}
+
+.banner-words {
+  color: white;
+}
+
+.sample-img {
+  opacity: 0.4;
+  filter: alpha(opacity=40); /* msie */
+}

@@ -22,3 +22,7 @@ main {
 a {
   color: #e51075;
 }
+
+* {
+  font-family: "Roboto Slab", serif;
+}

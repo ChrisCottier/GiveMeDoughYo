@@ -24,6 +24,8 @@ const Profile = (props) => {
   const [campaignNav, setCampaignNav] = useState("");
   const [contributionNav, setContributionNav] = useState("");
 
+  console.log("view", view);
+
   const handleNav = (event) => {
     setProfileNav("");
     setCampaignNav("");
@@ -47,9 +49,15 @@ const Profile = (props) => {
     if (view === "campaigns") {
       setProfileNav("");
       setCampaignNav("selected-nav");
+      setContributionNav("");
     } else if (view === "contributions") {
       setProfileNav("");
+      setCampaignNav("");
       setContributionNav("selected-nav");
+    } else if (!view) {
+      setProfileNav("selected-nav");
+      setCampaignNav("");
+      setContributionNav("");
     }
   }, [userId, view]);
 
