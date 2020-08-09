@@ -31,6 +31,7 @@ campaignsRouter.get(
 
     const campaignPic = await getS3Url(campaignData.campaignPic);
     campaignData.campaignPic = campaignPic;
+    campaignData.User.profilePic = await getS3Url(campaignData.User.profilePic);
 
     res.json(campaignData);
   })

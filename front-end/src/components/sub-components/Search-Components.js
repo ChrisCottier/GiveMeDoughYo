@@ -90,9 +90,11 @@ const CategoryMenu = (props) => {
       <div className="search-category-field">{field}</div>
       {categories.map((category) => {
         if (field === category.field) {
-          return <div className="search-category-name">{category.name}</div>;
-        } else {
-          return <></>;
+          return (
+            <div key={category.id} className="search-category-name">
+              {category.name}
+            </div>
+          );
         }
       })}
     </div>

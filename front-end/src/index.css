@@ -11,7 +11,7 @@ main {
   position: relative;
 } */
 .modal-card {
-  position: absolute;
+  /* position: absolute; */
   top: 20%;
 }
 

@@ -32,7 +32,9 @@ const Search = () => {
           </div>
           <div className="matches">
             {campaigns.map((campaign) => {
-              return <SearchTile campaign={campaign}></SearchTile>;
+              return (
+                <SearchTile key={campaign.id} campaign={campaign}></SearchTile>
+              );
             })}
           </div>
         </div>

@@ -17,7 +17,7 @@ export const CampaignPics = (props) => {
           alt="Campaign pic"
         ></img>
       </figure>
-      <div className="tile is-ancestor other-pics">
+      {/* <div className="tile is-ancestor other-pics">
         <div className="tile is-parent is-1 other-pic">
           <p className="is-child box">hi</p>
         </div>
@@ -27,7 +27,7 @@ export const CampaignPics = (props) => {
         <div className="tile is-parent is-1 other-pic">
           <p className="is-child box">hi</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -36,14 +36,19 @@ export const CampaignStatus = (props) => {
   const { campaign, user } = props;
   return (
     <div className="campaign-status column is-two-fifths">
-      <div className="funding">FUNDING</div>
-      <h1>{campaign.title}</h1>
-      <h2>{campaign.tagline}</h2>
-      <div className="campaign-user-details">
-        <i className="fas fa-search"></i>
+      <div className="funding campaign-bold">FUNDING</div>
+      <h1 className="title is-2 campaign-status-item">{campaign.title}</h1>
+      <h2 className="subtitle is-5 campaign-status-item">{campaign.tagline}</h2>
+      <div className="campaign-user-details campaign-status-item">
+        {/* <i className="fas fa-search"></i> */}
+        <NavLink
+          to={`/users/${user.id}`}
+          className="campaign-user-avatar"
+          style={{ backgroundImage: `url(${user.profilePic})` }}
+        ></NavLink>
         <div>
           <NavLink
-            className="campaign-user-name"
+            className="campaign-user-name campaign-bold"
             to={`/users/${user.id}`}
           >{`${user.firstName} ${user.lastName}`}</NavLink>
           <div className="campaign-user-location">{`${user.city}, ${user.stateProvince}, ${user.country}`}</div>
@@ -71,10 +76,10 @@ const Progress = (props) => {
   }
 
   return (
-    <div className="campaign-progress">
+    <div className="campaign-progress campaign-status-item">
       <div className="campaign-contributions spaced-out">
-        <div className="campaign-currentTotal">{`$${campaign.currentTotal} USD`}</div>
-        <div className="campaign-num-contributions">{`${contributionsCount} contributions`}</div>
+        <div className="campaign-currentTotal campaign-bold">{`$${campaign.currentTotal} USD`}</div>
+        <div className="campaign-num-contributions campaign-bold">{`${contributionsCount} contributions`}</div>
       </div>
       <div id="progress-bar">
         <div style={{ width: `${progressBar}%` }}></div>
@@ -272,10 +277,10 @@ export const CampaignPerks = (props) => {
         <div className="tile is-vertical is-parent">
           {perks.map((perk) => (
             <div key={perk.perk} className="is-child campaign-perk-box">
-              <img
+              <div
+                style={{ backgroundImage: `url(${campaign.campaignPic})` }}
                 className="campaign-perk-pic"
-                src={campaign.campaignPic}
-              ></img>
+              ></div>
               <div className="campaign-perk-cost">{`$${perk.perkCost}`}</div>
               <p className="campaign-perk">{perk.perk}</p>
             </div>

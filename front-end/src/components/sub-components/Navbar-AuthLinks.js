@@ -44,12 +44,12 @@ export const NavLoggedOut = (props) => {
   const { setShowLogin, setShowSignUp } = props;
   return (
     <>
-      <div className="navbar-item" onClick={() => setShowLogin(true)}>
+      <a className="navbar-item" onClick={() => setShowLogin(true)}>
         <div>Log In</div>
-      </div>
-      <div className="navbar-item" onClick={() => setShowSignUp(true)}>
+      </a>
+      <a className="navbar-item" onClick={() => setShowSignUp(true)}>
         <div>Sign Up</div>
-      </div>
+      </a>
     </>
   );
 };
