@@ -1,22 +1,33 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { submitLogin } from "../../actions/auth";
+import { submitLogin, SHOW_LOGIN } from "../../actions/auth";
 import EmailPasswordInputs from "./EmailPasswordInputs";
 
 const Login = (props) => {
-  const { showLogin, setShowLogin } = props;
+  // const { showLogin, setShowLogin } = props;
+  const { showLogin, token } = useSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     dispatch(submitLogin(email, password));
   };
 
+  const handleDemoLogin = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    dispatch(submitLogin("demo@gmail.com", "password"));
+  };
+
+  // useEffect(() => {}, [showLogin]);
+  console.log(showLogin);
+
   let displayType;
-  if (!showLogin) {
+  if (!showLogin || token) {
     displayType = "none";
   } else {
     displayType = "block";
@@ -30,7 +41,8 @@ const Login = (props) => {
       event.target.classList.contains("modal-background") ||
       event.target.classList.contains("cancel-login")
     ) {
-      setShowLogin(false);
+      // setShowLogin(false);
+      dispatch({ type: SHOW_LOGIN, showLogin: false });
     }
   };
 
@@ -57,7 +69,9 @@ const Login = (props) => {
                 </button>
               </div>
               <div className="control">
-                <button className="button is-primary">Demo User</button>
+                <button className="button is-primary" onClick={handleDemoLogin}>
+                  Demo User
+                </button>
               </div>
               <div className="control">
                 <button

@@ -3,6 +3,8 @@ import { baseUrl } from "../config";
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
 export const SET_TOKEN = "SET_TOKEN";
 export const REMOVE_TOKEN = "REMOVE_TOKEN";
+export const SHOW_LOGIN = "SHOW_LOGIN";
+export const HIDE_LOGIN = "HIDE_LOGIN";
 
 export const setToken = (token, userId, firstName, profilePic, follows) => ({
   type: SET_TOKEN,

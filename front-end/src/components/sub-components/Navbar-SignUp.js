@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { submitSignUp } from "../../actions/auth";
 import EmailPasswordInputs from "./EmailPasswordInputs";
@@ -10,6 +10,7 @@ const SignUp = (props) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -26,7 +27,7 @@ const SignUp = (props) => {
   };
 
   let displayType;
-  if (!showSignUp) {
+  if (!showSignUp || token) {
     displayType = "none";
   } else {
     displayType = "block";

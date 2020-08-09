@@ -1,4 +1,4 @@
-import { SET_TOKEN, REMOVE_TOKEN } from "../actions/auth";
+import { SET_TOKEN, REMOVE_TOKEN, SHOW_LOGIN } from "../actions/auth";
 import { NEW_FOLLOW } from "../actions/follows";
 const auth = (state = {}, action) => {
   switch (action.type) {
@@ -34,8 +34,15 @@ const auth = (state = {}, action) => {
       };
     }
 
+    case SHOW_LOGIN: {
+      return {
+        ...state,
+        showLogin: action.showLogin,
+      };
+    }
+
     default:
-      return state;
+      return { ...state };
   }
 };
 

@@ -11,7 +11,7 @@ import SearchBar from "./sub-components/Navbar-SearchBar";
 import { NavLoggedIn, NavLoggedOut } from "./sub-components/Navbar-AuthLinks";
 
 const Navbar = () => {
-  const [showLogin, setShowLogin] = useState(false);
+  // const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const { token, userId, firstName, profilePic } = useSelector(
     (state) => state.auth
@@ -19,7 +19,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setShowSignUp(false);
-    setShowLogin(false);
+    // setShowLogin(false);
   }, [token]);
 
   let authLinks;
@@ -35,7 +35,7 @@ const Navbar = () => {
   } else {
     authLinks = (
       <NavLoggedOut
-        setShowLogin={setShowLogin}
+        // setShowLogin={setShowLogin}
         setShowSignUp={setShowSignUp}
       ></NavLoggedOut>
     );
@@ -80,7 +80,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <Login showLogin={showLogin} setShowLogin={setShowLogin}></Login>
+      <Login></Login>
       <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp}></SignUp>
     </>
 

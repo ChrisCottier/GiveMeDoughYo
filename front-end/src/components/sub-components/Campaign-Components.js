@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { submitContribution } from "../../actions/contributions";
 import { submitFollow } from "../../actions/follows";
+import { SHOW_LOGIN } from "../../actions/auth";
 
 export const CampaignPics = (props) => {
   const { campaign } = props;
@@ -215,12 +216,16 @@ const CampaignStatusButtons = () => {
   }, [followStatus, follows]);
 
   const showModal = () => {
+    if (!token) {
+      dispatch({ type: SHOW_LOGIN, showLogin: true });
+      return;
+    }
     setShowContribution(true);
   };
 
   const toggleFollow = () => {
     if (!token) {
-      setCantFollow(true);
+      dispatch({ type: SHOW_LOGIN, showLogin: true });
       return;
     }
     dispatch(submitFollow(userId, id, token));

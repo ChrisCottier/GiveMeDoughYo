@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 
-import { removeToken, ACCESS_TOKEN } from "../../actions/auth";
+import { removeToken, ACCESS_TOKEN, SHOW_LOGIN } from "../../actions/auth";
 
 export const NavLoggedIn = (props) => {
   const { firstName, userId, profilePic } = props;
@@ -41,10 +41,15 @@ export const NavLoggedIn = (props) => {
 };
 
 export const NavLoggedOut = (props) => {
-  const { setShowLogin, setShowSignUp } = props;
+  const { setShowSignUp } = props;
+  const dispatch = useDispatch();
+
   return (
     <>
-      <a className="navbar-item" onClick={() => setShowLogin(true)}>
+      <a
+        className="navbar-item"
+        onClick={() => dispatch({ type: SHOW_LOGIN, showLogin: true })}
+      >
         <div>Log In</div>
       </a>
       <a className="navbar-item" onClick={() => setShowSignUp(true)}>
