@@ -1,5 +1,5 @@
 .splash-page {
-  margin-top: 60px;
+  margin-top: 55px;
 }
 
 .home-banner {
@@ -44,4 +44,19 @@
 .sample-img {
   opacity: 0.4;
   filter: alpha(opacity=40); /* msie */
+}
+
+.splash-new-campaigns {
+  margin-top: 400px;
+}
+
+.new-campaigns-tiles {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2em;
+}
+
+.splash-most-backed {
+  margin-top: 50px;
 }

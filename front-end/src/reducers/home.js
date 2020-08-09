@@ -1,4 +1,4 @@
-import { HOME_PICS, CURRENT_INDEX } from "../actions/home";
+import { HOME_PICS } from "../actions/home";
 
 const home = (state = { currentIndex: 0 }, action) => {
   switch (action.type) {
@@ -6,13 +6,8 @@ const home = (state = { currentIndex: 0 }, action) => {
       return {
         ...state,
         homePics: action.homePics,
-      };
-    }
-    case CURRENT_INDEX: {
-      console.log(action);
-      return {
-        ...state,
-        currentIndex: action.currentIndex,
+        newCampaigns: action.newCampaigns,
+        mostBacked: action.mostBacked,
       };
     }
 

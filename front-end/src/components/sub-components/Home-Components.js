@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
-import { getHomePics, CURRENT_INDEX } from "../../actions/home";
+import { getHomePics } from "../../actions/home";
 import home from "../../reducers/home";
 
 export const Banner = () => {

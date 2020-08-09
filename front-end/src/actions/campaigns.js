@@ -107,7 +107,7 @@ function perksArray(campaignObj) {
   return perks;
 }
 
-function daysLeft(campaignObj) {
+export function daysLeft(campaignObj) {
   const today = new Date();
   const then = new Date(campaignObj.createdAt);
 
