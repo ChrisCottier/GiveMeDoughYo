@@ -76,6 +76,11 @@
   font-weight: 700;
 }
 
+div.selected-filter {
+  font-weight: 700;
+  color: #e51075;
+}
+
 .search-category-field {
   color: #088366;
   margin: 10px 10px;

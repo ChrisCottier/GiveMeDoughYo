@@ -17,8 +17,8 @@ const Search = () => {
   useEffect(() => {
     dispatch(doneSearching());
     dispatch(getCategories());
-    dispatch(searchFor(query, category));
-  }, [category, query]);
+    dispatch(searchFor(query, filterCategory));
+  }, [filterCategory, query]);
 
   if (campaigns === undefined || campaigns === null) {
     return null;
@@ -28,7 +28,10 @@ const Search = () => {
       <div className="search-page-container container is-widescreen">
         <div className="search-results columns">
           <div className="filter column is-one-quarter">
-            <SearchFilter setFilterCategory={setFilterCategory}></SearchFilter>
+            <SearchFilter
+              setFilterCategory={setFilterCategory}
+              filterCategory={filterCategory}
+            ></SearchFilter>
           </div>
           <div className="matches">
             {campaigns.map((campaign) => {

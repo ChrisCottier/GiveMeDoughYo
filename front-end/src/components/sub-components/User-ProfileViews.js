@@ -121,10 +121,10 @@ const UserFollows = (props) => {
         >
           {campaign.title}
         </NavLink>
-        <h2 className="subtitle is-5 user-campaign-creator">
+        {/* <h2 className="subtitle is-5 user-campaign-creator">
           <span>By </span>
           <NavLink to={`/users/${user.id}`}>{user.firstName}</NavLink>
-        </h2>
+        </h2> */}
         <div className="user-campaign-tagline">{campaign.tagline}</div>
       </div>
     </div>

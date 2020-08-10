@@ -30,7 +30,7 @@ const SearchBar = () => {
         <div className="control has-icons-left has-icons-right">
           <input
             id="search-bar"
-            className="input is-rounded"
+            className="input is-rounded is-wide"
             type="text"
             name="search"
             value={query}

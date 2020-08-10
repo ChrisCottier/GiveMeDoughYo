@@ -62,14 +62,37 @@ campaignsRouter.get(
         },
         limit: 40,
       });
-      for (let campaign of matchingCampaigns) {
-        let campaignPic = await getS3Url(campaign.campaignPic);
-        campaign.campaignPic = campaignPic;
-        campaign.story = null;
-      }
     } else {
+      const { id: categoryId } = await Category.findOne({
+        where: {
+          name: category,
+        },
+      });
+      matchingCampaigns = await Campaign.findAll({
+        include: { model: Category },
+        where: {
+          categoryId: categoryId,
+          [Op.or]: {
+            title: {
+              [Op.iLike]: `%${query}%`,
+            },
+            tagline: {
+              [Op.iLike]: `%${query}%`,
+            },
+            story: {
+              [Op.iLike]: `%${query}%`,
+            },
+          },
+        },
+        limit: 40,
+      });
     }
 
+    for (let campaign of matchingCampaigns) {
+      let campaignPic = await getS3Url(campaign.campaignPic);
+      campaign.campaignPic = campaignPic;
+      campaign.story = null;
+    }
     res.json(matchingCampaigns);
   })
 );
@@ -123,7 +146,6 @@ campaignsRouter.post(
 
     const campaign = await Campaign.findByPk(id);
     if (campaign.userId !== req.user.id) {
-      console.log("not authorized");
       res.json("ow");
     }
 

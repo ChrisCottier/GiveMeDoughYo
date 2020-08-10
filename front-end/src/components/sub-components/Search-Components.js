@@ -67,21 +67,38 @@ export const SearchTile = (props) => {
 };
 
 export const SearchFilter = (props) => {
-  const { setFilterCategory } = props;
+  const { setFilterCategory, filterCategory } = props;
   return (
     <div className="filter-menu">
       <div className="filter-title title is-5">Filter results</div>
       <div className="filter-subtitle subtitle is-6">Category</div>
-      <CategoryMenu field="Tech and Innovation"></CategoryMenu>
-      <CategoryMenu field="Creative"></CategoryMenu>
-      <CategoryMenu field="Community"></CategoryMenu>
+      <CategoryMenu
+        field="Tech and Innovation"
+        setFilterCategory={setFilterCategory}
+        filterCategory={filterCategory}
+      ></CategoryMenu>
+      <CategoryMenu
+        field="Creative"
+        setFilterCategory={setFilterCategory}
+        filterCategory={filterCategory}
+      ></CategoryMenu>
+      <CategoryMenu
+        field="Community"
+        setFilterCategory={setFilterCategory}
+        filterCategory={filterCategory}
+      ></CategoryMenu>
     </div>
   );
 };
 
 const CategoryMenu = (props) => {
-  const { field } = props;
+  const { field, setFilterCategory, filterCategory } = props;
+
   const { categories } = useSelector((state) => state.categories);
+
+  const setCategory = (event) => {
+    setFilterCategory(event.target.innerText);
+  };
 
   if (!categories) return null;
 
@@ -90,8 +107,16 @@ const CategoryMenu = (props) => {
       <div className="search-category-field">{field}</div>
       {categories.map((category) => {
         if (field === category.field) {
+          let selectedFilter = "";
+          if (category.name === filterCategory) {
+            selectedFilter = "selected-filter";
+          }
           return (
-            <div key={category.id} className="search-category-name">
+            <div
+              key={category.id}
+              className={`search-category-name ${selectedFilter}`}
+              onClick={setCategory}
+            >
               {category.name}
             </div>
           );
