@@ -2,7 +2,7 @@ const express = require("express");
 const contributionsRouter = express.Router();
 
 const { User, Campaign, Contribution } = require("../db/models");
-const { asyncHandler, hasPerk } = require("../utils");
+const { asyncHandler, hasPerk, getS3Url } = require("../utils");
 const { requireAuth } = require("../auth");
 
 contributionsRouter.post(
@@ -35,8 +35,9 @@ contributionsRouter.post(
     });
     await contributor.save();
     await campaign.save();
+    campaign.campaignPic = await getS3Url(campaign.campaignPic);
 
-    res.json(contribution);
+    res.json(campaign);
   })
 );
 

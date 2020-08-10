@@ -91,7 +91,7 @@ export const submitCampaign = (campaign, campaignPic, token) => async (
   }
 };
 
-function perksArray(campaignObj) {
+export function perksArray(campaignObj) {
   const perks = [];
   for (let i = 1; i <= 5; i++) {
     let perkNum = `perk${i}`;

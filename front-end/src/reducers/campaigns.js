@@ -7,6 +7,7 @@ import {
   DONE_SEARCHING,
   CREATE_CAMPAIGN,
 } from "../actions/campaigns";
+import { SUCCESSFUL_CONTRIBUTION } from "../actions/contributions";
 
 const campaigns = (state = {}, action) => {
   switch (action.type) {
@@ -23,7 +24,12 @@ const campaigns = (state = {}, action) => {
         successfulUpload: action.successfulUpload,
       };
     }
-
+    case SUCCESSFUL_CONTRIBUTION: {
+      return {
+        ...state,
+        campaign: action.campaign,
+      };
+    }
     case CAMPAIGN_PAGE: {
       const {
         id,
