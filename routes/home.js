@@ -18,7 +18,7 @@ homeRouter.get(
     }
 
     const newCampaigns = await Campaign.findAll({
-      order: [["createdAt", "ASC"]],
+      order: [["createdAt", "DESC"]],
       limit: 4,
       include: { model: Category },
     });
