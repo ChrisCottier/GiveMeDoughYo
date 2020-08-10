@@ -53,7 +53,7 @@ const Navbar = () => {
               explore dropdown
               about
               search */}
-            <Explore></Explore>
+            {/* <Explore></Explore> */}
             <div className="navbar-item ">
               <NavLink to="/about">About</NavLink>
             </div>
@@ -63,14 +63,6 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-end">
-            {/* LOGGED IN
-              start a campaign
-              profile dropdown
-              LOGGED OUT
-              start a campaign
-              Log In
-              Sign Up
-              */}
             <div className="navbar-item">
               <NavLink to="/create-campaign" className="start-campaign">
                 Start A Campaign
