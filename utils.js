@@ -25,18 +25,22 @@ const asyncHandler = (handler) => (req, res, next) =>
 
 const hasPerk = (amount, campaign) => {
   let newPerk = null;
+  let cost = 0;
 
   for (let i = 1; i <= 5; i++) {
     let perkCost = `perk${i}Cost`;
     let perk = `perk${i}`;
 
-    if (amount > campaign[perkCost] && campaign[perk]) {
+    if (amount > campaign[perkCost] && campaign[perk] && campaign[perkCost] > cost) {
       newPerk = campaign[perk];
+      cost = campaign[perkCost]
     }
   }
 
   return newPerk;
 };
+
+// console.log(hasPerk(101, sample))
 module.exports = {
   asyncHandler,
   getS3Url,
