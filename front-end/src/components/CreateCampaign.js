@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {Redirect} from "react-router-dom"
+
 import { getCategories } from "../actions/categories";
 import { submitCampaign, CREATE_CAMPAIGN } from "../actions/campaigns";
+import {SHOW_LOGIN} from "../actions/auth"
 
 const CreateCampaign = () => {
   const [title, setTitle] = useState("");
@@ -24,6 +27,7 @@ const CreateCampaign = () => {
   const [perk5, setPerk5] = useState("");
 
   const { categories } = useSelector((state) => state.categories);
+  const {newCampaignId} = useSelector((state)=> state.campaigns)
   const { userId, token } = useSelector((state) => state.auth);
   //   const { successfulUpload } = useSelector((state) => state.campaigns);
   const dispatch = useDispatch();
@@ -40,6 +44,10 @@ const CreateCampaign = () => {
     event.stopPropagation();
     event.preventDefault();
 
+    if (!token) {
+      dispatch({ type: SHOW_LOGIN, showLogin: true });
+      return;
+    }
     const campaign = {
       title,
       tagline,
@@ -61,6 +69,7 @@ const CreateCampaign = () => {
     };
 
     dispatch(submitCampaign(campaign, campaignPic, token));
+
   };
 
   const handleChange = (event) => {
@@ -147,6 +156,11 @@ const CreateCampaign = () => {
   if (!categories) {
     return null;
   }
+
+  if (newCampaignId) {
+    return <Redirect to={`/campaigns/${newCampaignId}`}></Redirect>
+  }
+
   return (
     <main>
       <div className="create-campaign-container container is-widescreen">

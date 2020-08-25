@@ -32,6 +32,24 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        firstName: "Bigsby",
+        lastName: "S Middleton",
+        email: "bigsby@gmail.com",
+        hashedPassword:
+          "$2a$08$uJ6MSmKT3O008tMBup4Xi.4y34onw45awvn.6HZHsDcmBY4Y4W.jS",
+        city: "Chicago",
+        stateProvince: "Illinois",
+        country: "United States",
+        shortDescription:
+          "I live for the theater",
+        aboutMe:
+          "Far be it from I to boast of my NUMEROUS and STORIED accomplishments, but if you MUST be privy I dearsay do hasten to make my acquaintance at bigsby@gmail.com",
+        balance: 100000,
+        profilePic: "default-profile-pic.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
         firstName: `Vernon`,
         lastName: `West`,
         email: `Amya_Murray@gmail.com`,

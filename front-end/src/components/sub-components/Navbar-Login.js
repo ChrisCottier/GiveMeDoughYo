@@ -24,7 +24,6 @@ const Login = (props) => {
   };
 
   // useEffect(() => {}, [showLogin]);
-  console.log(showLogin);
 
   let displayType;
   if (!showLogin || token) {

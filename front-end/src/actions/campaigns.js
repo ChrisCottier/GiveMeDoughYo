@@ -84,9 +84,9 @@ export const submitCampaign = (campaign, campaignPic, token) => async (
         }
       );
       const updatedCampaign = await res.json();
-      dispatch({ type: CREATE_CAMPAIGN, successfulUpload: true });
+      dispatch({ type: CREATE_CAMPAIGN, successfulUpload: true, newCampaignId: campaign.id });
     } else {
-      dispatch({ type: CREATE_CAMPAIGN, successfulUpload: false });
+      dispatch({ type: CREATE_CAMPAIGN, successfulUpload: false, newCampaignId: campaign.id  });
     }
   }
 };

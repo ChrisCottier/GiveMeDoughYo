@@ -68,7 +68,8 @@ const loggedInUser = (req, res, next) => {
   //WHERE TO RUN IT: it's a middleware, run before rendering pug to see if we need to render certain options/links for user.
   const { token } = req;
 
-  if (!token) {
+  // console.log('token', typeof token)
+  if (token === 'null') {
     req.user = null;
     next();
     return;

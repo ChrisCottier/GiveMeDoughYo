@@ -40,7 +40,6 @@ const hasPerk = (amount, campaign) => {
   return newPerk;
 };
 
-// console.log(hasPerk(101, sample))
 module.exports = {
   asyncHandler,
   getS3Url,

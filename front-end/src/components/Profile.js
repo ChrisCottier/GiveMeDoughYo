@@ -24,7 +24,6 @@ const Profile = (props) => {
   const [campaignNav, setCampaignNav] = useState("");
   const [contributionNav, setContributionNav] = useState("");
 
-  console.log("view", view);
 
   const handleNav = (event) => {
     setProfileNav("");

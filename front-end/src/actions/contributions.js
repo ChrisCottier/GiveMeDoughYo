@@ -40,7 +40,6 @@ export const submitContribution = (
     const campaign = await res.json();
     campaign.daysLeft = daysLeft(campaign);
     campaign.perks = perksArray(campaign);
-    console.log(campaign);
 
     dispatch(successfulContribution(amount, title, campaign));
   } else {

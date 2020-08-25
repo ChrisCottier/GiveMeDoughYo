@@ -34,7 +34,6 @@ homeRouter.get(
       include: { model: Category },
     });
 
-    console.log(mostBacked);
 
     for (let campaign of mostBacked) {
       campaign.campaignPic = await getS3Url(campaign.campaignPic);

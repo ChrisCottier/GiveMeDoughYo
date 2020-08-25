@@ -73,10 +73,12 @@ export const hasAccessToken = () => async (dispatch) => {
 
   if (res.ok) {
     const details = await res.json();
-    const { id, email, firstName, profilePic, Follows: follows } = details;
-    const userId = id;
-    if (details.id) {
-      dispatch(setToken(token, userId, firstName, profilePic, follows));
+    if (details !== null) {
+      const { id, email, firstName, profilePic, Follows: follows } = details;
+      const userId = id;
+      if (details.id) {
+        dispatch(setToken(token, userId, firstName, profilePic, follows));
+      }
     }
   }
 };

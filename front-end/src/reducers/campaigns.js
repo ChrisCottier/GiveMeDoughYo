@@ -22,6 +22,7 @@ const campaigns = (state = {}, action) => {
       return {
         ...state,
         successfulUpload: action.successfulUpload,
+        newCampaignId: action.newCampaignId
       };
     }
     case SUCCESSFUL_CONTRIBUTION: {
@@ -58,6 +59,7 @@ const campaigns = (state = {}, action) => {
       } = action.campaignData;
       return {
         ...state,
+        newCampaignId: null,
         campaign: {
           id,
           title,
