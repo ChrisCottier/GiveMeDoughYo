@@ -14,6 +14,8 @@ import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 import CreateCampaign from "./components/CreateCampaign";
 import About from "./components/About";
+import Footer from "./components/Footer"
+import EditUser from "./components/EditUser"
 import { hasAccessToken } from "./actions/auth";
 
 function App() {
@@ -31,10 +33,11 @@ function App() {
         {/* TODO IF ITS EASY ENOUGH CHANGE ROUTE TO /campaigns/:title */}
         <Route exact path="/users/:id" component={User} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/profile/:view" component={Profile} />
+        <Route exact path="/profile/edit" component={EditUser} />
+        <Route path="/profile/:view" component={Profile} />
         <Route path="/search/:category/:query" component={Search} />
-        <Route path="/about" component={About} />
       </Switch>
+      <Footer></Footer>
     </BrowserRouter>
   );
 }

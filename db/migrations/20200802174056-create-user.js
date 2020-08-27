@@ -27,18 +27,23 @@ module.exports = {
       },
       city: {
         type: Sequelize.STRING(50),
+        defaultValue: "",
       },
       stateProvince: {
         type: Sequelize.STRING(50),
+        defaultValue: "",
       },
       country: {
         type: Sequelize.STRING(50),
+        defaultValue: "",
       },
       shortDescription: {
         type: Sequelize.STRING(255),
+        defaultValue: "",
       },
       aboutMe: {
         type: Sequelize.TEXT,
+        defaultValue: "",
       },
       balance: {
         type: Sequelize.INTEGER,

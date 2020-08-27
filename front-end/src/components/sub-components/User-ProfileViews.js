@@ -171,3 +171,16 @@ export const ContributionsView = (props) => {
     </div>
   );
 };
+
+export const ProfileNav = () => {
+  return (
+    <nav id="profile-nav" className="navbar">
+      <div className="navbar-menu">
+        <div className="navbar-start">
+          <NavLink to="/profile" className="navbar-item is-active"><i className="fas fa-eye fa-2x"></i>Profile</NavLink>
+          <NavLink to="/profile/edit" className="navbar-item is-active"><i className="far fa-edit fa-2x"></i>Edit Profile</NavLink>
+        </div>
+      </div>
+    </nav>
+  )
+}

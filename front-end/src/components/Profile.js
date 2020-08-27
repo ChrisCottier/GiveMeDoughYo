@@ -9,6 +9,7 @@ import {
   UserProfileView,
   CampaignsView,
   ContributionsView,
+  ProfileNav
 } from "./sub-components/User-ProfileViews";
 
 const Profile = (props) => {
@@ -67,6 +68,7 @@ const Profile = (props) => {
   return (
     <main>
       <div className="user-page-container container is-widescreen">
+        <ProfileNav></ProfileNav>
         <header className="user-page-header hero">
           <div className="hero-body">
             <h1 className="user-name title">
@@ -74,7 +76,9 @@ const Profile = (props) => {
             </h1>
             <h2 className="user-location">
               <i className="fas fa-map-marker-alt"></i>
-              {`  ${user.city}, ${user.stateProvince}, ${user.country}`}
+              {user.city ? ` ${user.city},` : ''}
+              {user.stateProvince ? ` ${user.stateProvince},` : ''}
+              {user.country ? ` ${user.country}` : ''}
             </h2>
           </div>
           <nav className="navbar user-navbar">

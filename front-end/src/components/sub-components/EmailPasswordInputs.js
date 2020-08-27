@@ -32,16 +32,19 @@ const EmailPasswordInputs = (props) => {
       </div>
       <div className="field">
         <label className="label">Password</label>
-        <div className="control">
+        <div className="control has-icons-left">
           <input
             className="input"
             type="password"
-            placeholder="password"
+            placeholder="Password"
             name="password"
             value={password}
             onChange={handlePassword}
             required
           />
+          <span className="icon is-small is-left">
+            <i className="fa fa-key"></i>
+          </span>
         </div>
       </div>
     </>

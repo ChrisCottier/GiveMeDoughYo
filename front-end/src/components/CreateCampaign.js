@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {Redirect} from "react-router-dom"
 
+import { TextAreaInput, TextInput, NumberInput, FileInput, CategoryInput} from './sub-components/Form-Inputs'
 import { getCategories } from "../actions/categories";
 import { submitCampaign, CREATE_CAMPAIGN } from "../actions/campaigns";
 import {SHOW_LOGIN} from "../actions/auth"
@@ -318,102 +319,6 @@ const CreateCampaign = () => {
   );
 };
 
-const TextAreaInput = (props) => {
-  const { label, placeHolder, value, handleChange, require, name } = props;
-  return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="control">
-        <textarea
-          className="textarea"
-          placeholder={placeHolder}
-          value={value}
-          onChange={handleChange}
-          required={require}
-          name={name}
-        ></textarea>
-      </div>
-    </div>
-  );
-};
 
-const TextInput = (props) => {
-  const { label, placeHolder, value, handleChange, require, name } = props;
-  return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="control">
-        <input
-          className="input"
-          type="text"
-          placeholder={placeHolder}
-          value={value}
-          onChange={handleChange}
-          required={require}
-          name={name}
-        ></input>
-      </div>
-    </div>
-  );
-};
-
-const NumberInput = (props) => {
-  const { label, placeHolder, value, handleChange, require, name } = props;
-  return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="control">
-        <input
-          className="input"
-          type="number"
-          placeholder={placeHolder}
-          value={value}
-          onChange={handleChange}
-          required={require}
-          name={name}
-        ></input>
-      </div>
-    </div>
-  );
-};
-
-const FileInput = (props) => {
-  const { label, value, handleChange, require, name } = props;
-  return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="control">
-        <input
-          className="input"
-          type="file"
-          files={value}
-          onChange={handleChange}
-          required={require}
-          name={name}
-          accept=".png,.jpg"
-        ></input>
-      </div>
-    </div>
-  );
-};
-
-const CategoryInput = (props) => {
-  const { categories, label, value, handleChange, name } = props;
-
-  return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="select">
-        <select value={value} onChange={handleChange} name={name}>
-          {categories.map((category) => (
-            <option value={category.id} key={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-  );
-};
 
 export default CreateCampaign;

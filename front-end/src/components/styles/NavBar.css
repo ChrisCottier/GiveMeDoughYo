@@ -2,6 +2,10 @@
   border-bottom: 1px solid lightgray;
 }
 
+#main-nav {
+  z-index: 50;
+}
+
 .logo {
   color: #e51075;
   font-family: "Varela Round", sans-serif;
@@ -33,4 +37,18 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+#profile-nav {
+  background-color: black;
+}
+
+#profile-nav a{
+  color: lightgray;
+  font-size: 20px
+}
+
+#profile-nav i {
+  margin-right: 10px;
+  margin-left: 10px;
 }
