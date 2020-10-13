@@ -5,6 +5,7 @@ export const SEARCHING = "SEARCHING";
 export const DONE_SEARCHING = "DONE_SEARCHING";
 export const MATCHING_CAMPAIGNS = "MATCHING_CAMPAIGNS";
 export const CREATE_CAMPAIGN = "CREATE_CAMPAIGN";
+export const CLEAR_CAMPAIGN_INFO = 'CLEAR_CAMPAIGN_INFO';
 
 const campaignPage = (campaignData) => ({
   type: CAMPAIGN_PAGE,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { submitContribution } from "../../actions/contributions";
+import { submitContribution, RESET_CONTRIBUTION } from "../../actions/contributions";
 import { submitFollow } from "../../actions/follows";
 import { SHOW_LOGIN } from "../../actions/auth";
 
@@ -130,10 +130,16 @@ const ContributionModal = (props) => {
   let contributionMessage;
 
   if (successfulContribution === true) {
-    contributionMessage = message;
-  } else if (successfulContribution === false) {
-    contributionMessage = message;
-  }
+    
+    setTimeout(() => {
+      setShowContribution(false);
+    }, 3000)
+    dispatch({type: RESET_CONTRIBUTION})
+  } 
+  // else if (successfulContribution === false) {
+  //   contributionMessage = message;
+  // }
+  contributionMessage = message;
 
   const modalOff = (event) => {
     event.stopPropagation();
@@ -155,8 +161,8 @@ const ContributionModal = (props) => {
           <p className="modal-card-title">Make Contribution</p>
         </header>
         <section className="modal-card-body">
-          {errorMessage ? <div>{errorMessage}</div> : <></>}
-          {contributionMessage ? <div>{contributionMessage}</div> : <></>}
+          {errorMessage ? <div className="failure-message">{errorMessage}</div> : <></>}
+          {contributionMessage ? <div className="success-message">{contributionMessage}</div> : <></>}
           <form onSubmit={handleSubmit}>
             <div className="field">
               <label className="label">Amount</label>

@@ -120,3 +120,11 @@
   background-position: center center;
   margin-right: 15px;
 }
+
+.success-message {
+  color: green;
+}
+
+.failure-message {
+  color: red;
+}
