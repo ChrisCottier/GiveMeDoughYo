@@ -3,6 +3,7 @@ import { CAMPAIGN_PAGE } from "../actions/campaigns";
 import {
   SUCCESSFUL_CONTRIBUTION,
   FAILED_CONTRIBUTION,
+  RESET_CONTRIBUTION
 } from "../actions/contributions";
 
 const contributions = (state = {}, action) => {
@@ -36,6 +37,12 @@ const contributions = (state = {}, action) => {
         successfulContribution: false,
         message: `Contribution of $${action.amount} to ${action.title} was unsuccesful. Please contribute amount within your balance.`,
       };
+    }
+    case RESET_CONTRIBUTION: {
+      return {
+        ...state,
+        successfulContribution: false
+      }
     }
 
     default:

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 
+import {CLEAR_CAMPAIGN_INFO} from '../actions/campaigns'
 import "./styles/Campaign.css";
 import { getCampaignInfo } from "../actions/campaigns";
 import {
@@ -20,6 +21,7 @@ const Campaign = () => {
 
   useEffect(() => {
     dispatch(getCampaignInfo(id));
+    return () => dispatch({type: CLEAR_CAMPAIGN_INFO})
   }, [id]);
 
   if (!campaign) {

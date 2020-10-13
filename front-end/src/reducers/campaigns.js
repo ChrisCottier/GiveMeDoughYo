@@ -6,6 +6,7 @@ import {
   SEARCHING,
   DONE_SEARCHING,
   CREATE_CAMPAIGN,
+  CLEAR_CAMPAIGN_INFO
 } from "../actions/campaigns";
 import { SUCCESSFUL_CONTRIBUTION } from "../actions/contributions";
 
@@ -86,6 +87,13 @@ const campaigns = (state = {}, action) => {
           daysLeft,
         },
       };
+    }
+
+    case CLEAR_CAMPAIGN_INFO: {
+      return {
+        ...state,
+        campaign: null
+      }
     }
 
     case MATCHING_CAMPAIGNS: {

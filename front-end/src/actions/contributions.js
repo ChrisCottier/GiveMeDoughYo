@@ -4,6 +4,7 @@ import { perksArray, daysLeft } from "./campaigns";
 
 export const SUCCESSFUL_CONTRIBUTION = "SUCCESSFUL_CONTRIBUTION";
 export const FAILED_CONTRIBUTION = "FAILED_CONTRIBUTION";
+export const RESET_CONTRIBUTION = "RESET_CONTRIBUTION"
 
 const successfulContribution = (amount, title, campaign) => ({
   type: SUCCESSFUL_CONTRIBUTION,
