@@ -27,7 +27,7 @@ const contributions = (state = {}, action) => {
       return {
         ...state,
         successfulContribution: true,
-        message: `Contribution of $${action.amount} to ${action.title} was succesful!`,
+        message: `Contribution of $${action.amount} to ${action.title} was successful!`,
       };
     }
 
@@ -35,7 +35,7 @@ const contributions = (state = {}, action) => {
       return {
         ...state,
         successfulContribution: false,
-        message: `Contribution of $${action.amount} to ${action.title} was unsuccesful. Please contribute amount within your balance.`,
+        message: `Contribution of $${action.amount} to ${action.title} was unsuccessful. Please contribute amount within your balance.`,
       };
     }
     case RESET_CONTRIBUTION: {
