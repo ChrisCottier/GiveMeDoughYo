@@ -61,7 +61,7 @@ export function daysLeft(campaignObj) {
 }
 ```
 
-GIF HERE
+![Alt Text](https://indiegogo-clone.s3.us-east-2.amazonaws.com/giveme-campaign-page.png)
 
 ### Contributions and Following
 
@@ -129,16 +129,17 @@ const hasPerk = (amount, campaign) => {
 };
 ```
 
-CONTRIBUTION GIF
+![Alt Text](https://indiegogo-clone.s3.us-east-2.amazonaws.com/giveme-contribution.gif)
 
 ### User Profiles
 
 User profiles are split into 3 displays: profile, campaigns, and contributions. Profile and campaigns are public, displaying the relevant user details / information and created/followed campaigns respectively. The private contributions tab displays the history of contributions a user has made and the perks they were awarded.
 
-USER PROFILE GIF
+![Alt Text](https://indiegogo-clone.s3.us-east-2.amazonaws.com/giveme-profile.gif)
 
 ### Search
 
 A faceted search was implemented to allow users to find campaigns through keywords; matching either the campaign description or its title.
 Users can filter results by categories.
-SEARCH GIF
+
+![Alt Text](https://indiegogo-clone.s3.us-east-2.amazonaws.com/giveme-search.gif)
