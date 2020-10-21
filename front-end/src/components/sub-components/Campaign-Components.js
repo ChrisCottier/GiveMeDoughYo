@@ -162,7 +162,8 @@ const ContributionModal = (props) => {
         </header>
         <section className="modal-card-body">
           {errorMessage ? <div className="failure-message">{errorMessage}</div> : <></>}
-          {contributionMessage ? <div className="success-message">{contributionMessage}</div> : <></>}
+          {contributionMessage && contributionMessage.includes(' successful') ? <div className="success-message">{contributionMessage}</div> : <></>}
+          {contributionMessage && contributionMessage.includes(' unsuccessful') ? <div className="failure-message">{contributionMessage}</div> : <></>}
           <form onSubmit={handleSubmit}>
             <div className="field">
               <label className="label">Amount</label>
