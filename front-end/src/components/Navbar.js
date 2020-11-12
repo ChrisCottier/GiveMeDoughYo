@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -17,6 +17,7 @@ const Navbar = () => {
   const { token, userId, firstName, profilePic } = useSelector(
     (state) => state.auth
   );
+  const menu = useRef(null)
 
   useEffect(() => {
     setShowSignUp(false);
@@ -42,15 +43,29 @@ const Navbar = () => {
     );
   }
 
+  const toggleBurger = (event) => {
+    event.stopPropagation();
+    event.target.classList.toggle('is-active');
+    menu.current.classList.toggle('is-active')
+  }
+
 
 
   return (
     <>
       <nav id="main-nav" className="navbar is-fixed-top is-transparent">
-        <NavLink to="/" className="logo navbar-brand">
-          {appName.toUpperCase()}
-        </NavLink>
-        <div className="navbar-menu">
+        <div className="navbar-brand">
+          <NavLink to="/" className="logo">
+            {appName.toUpperCase()}
+          </NavLink>
+          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={toggleBurger}>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div className="navbar-menu" ref={menu}>
           <div className="navbar-start">
             <div className="navbar-item ">
               {/* <NavLink to="/about">About</NavLink> */}
