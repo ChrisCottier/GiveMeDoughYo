@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-
+import { appName } from "../../config";
 import { Banner } from "./sub-components/Home-Components";
 import { SearchTile } from "./sub-components/Search-Components";
 import "./styles/Home.css";
