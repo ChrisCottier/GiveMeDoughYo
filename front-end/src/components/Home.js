@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { appName } from "../config";
+
 import { Banner } from "./sub-components/Home-Components";
 import { SearchTile } from "./sub-components/Search-Components";
 import "./styles/Home.css";
@@ -12,10 +12,6 @@ const Home = () => {
   return (
     <main className="splash-page">
       <Banner></Banner>
-      <div className="banner-word-overlay">
-        <div className="banner-title banner-words">{appName}</div>
-        <div className="banner-words motto">Bring Your Ideas to Life</div>
-      </div>
       <div className="splash-container container is-widescreen">
         <div className="splash-new-campaigns">
           <h1 className="title is-3">New Campaigns</h1>

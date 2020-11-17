@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
+import { appName } from "../../config";
 import { getHomePics } from "../../actions/home";
 import home from "../../reducers/home";
 
@@ -32,6 +33,10 @@ export const Banner = () => {
             <img className="sample-img" src={pic}></img>
           </div>
         ))}
+        <div className="banner-word-overlay">
+          <div className="banner-title banner-words">{appName}</div>
+          <div className="banner-words motto">Bring Your Ideas to Life</div>
+      </div>
       </Carousel>
     </>
   );
