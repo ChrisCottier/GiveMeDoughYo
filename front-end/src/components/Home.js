@@ -11,10 +11,12 @@ const Home = () => {
 
   return (
     <main className="splash-page">
-      <Banner></Banner>
-      <div className="banner-word-overlay">
-        <div className="banner-title banner-words">{appName}</div>
-        <div className="banner-words motto">Bring Your Ideas to Life</div>
+      <div className='banner-container'>
+        <Banner></Banner>
+        <div className="banner-word-overlay">
+          <div className="banner-title banner-words">{appName}</div>
+          <div className="banner-words motto">Bring Your Ideas to Life</div>
+        </div>
       </div>
       <div className="splash-container container is-widescreen">
         <div className="splash-new-campaigns">

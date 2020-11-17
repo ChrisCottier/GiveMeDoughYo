@@ -2,12 +2,9 @@
   margin-top: 55px;
 }
 
-.home-banner {
-  width: 100vw;
-  height: 600px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+.banner-container {
+  display: block;
+  position: relative;
 }
 
 .banner-carousel {
@@ -29,11 +26,11 @@
 
 .banner-title {
   font-family: "Varela Round", sans-serif;
-  font-size: 80px;
+  font-size: 4vw;
 }
 
 .motto {
-  font-size: 30px;
+  font-size: 2vw;
   font-family: "Varela Round", sans-serif;
 }
 
@@ -59,4 +56,10 @@
 
 .splash-most-backed {
   margin-top: 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .banner-container {
+    display: none;
+  }
 }
