@@ -6,6 +6,7 @@
 main {
   margin-top: 65px;
   z-index: 1;
+  min-height: 90vh;
 }
 
 /* .modal-background {
@@ -26,4 +27,10 @@ a {
 
 * {
   font-family: "Roboto Slab", serif;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

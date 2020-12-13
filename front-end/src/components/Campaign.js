@@ -11,6 +11,7 @@ import {
   CampaignStory,
   CampaignPerks,
 } from "./sub-components/Campaign-Components";
+import Loading from './Loading'
 import campaigns from "../reducers/campaigns";
 
 const Campaign = () => {
@@ -25,7 +26,7 @@ const Campaign = () => {
   }, [id]);
 
   if (!campaign) {
-    return null;
+    return <Loading></Loading>;
   }
   return (
     <main>

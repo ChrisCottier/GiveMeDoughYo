@@ -8,6 +8,7 @@ import {
   UserProfileView,
   CampaignsView,
 } from "./sub-components/User-ProfileViews";
+import Loading from './Loading'
 
 const User = (props) => {
   const { id } = useParams();
@@ -38,7 +39,7 @@ const User = (props) => {
   }, [id]);
 
   if (!user || !campaigns) {
-    return null;
+    return <Loading></Loading>;
   }
 
   if (userId === user.id) {
