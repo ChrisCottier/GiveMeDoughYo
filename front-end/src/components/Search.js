@@ -6,6 +6,7 @@ import { getCategories } from "../actions/categories";
 
 import "./styles/Search.css";
 import { SearchTile, SearchFilter } from "./sub-components/Search-Components";
+import Loading from './Loading'
 
 const Search = () => {
   let { category, query } = useParams();
@@ -20,9 +21,12 @@ const Search = () => {
     dispatch(searchFor(query, filterCategory));
   }, [filterCategory, query]);
 
+
+
   if (campaigns === undefined || campaigns === null) {
-    return null;
+    return <Loading></Loading>;
   }
+
   return (
     <main>
       <div className="search-page-container container is-widescreen">
