@@ -1,3 +1,7 @@
+.search-results {
+  display: flex;
+}
+
 .search-tile {
   display: flex;
   flex-direction: column;

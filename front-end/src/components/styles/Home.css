@@ -48,7 +48,7 @@
 }
 
 .splash-new-campaigns {
-  margin-top: 400px;
+  margin-top: 20vw;
 }
 
 .new-campaigns-tiles {
@@ -60,10 +60,4 @@
 
 .splash-most-backed {
   margin-top: 50px;
-}
-
-@media only screen and (max-width: 1000px) {
-  .banner-container {
-    display: none;
-  }
 }
