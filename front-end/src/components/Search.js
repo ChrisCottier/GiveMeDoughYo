@@ -30,14 +30,14 @@ const Search = () => {
   return (
     <main>
       <div className="search-page-container container is-widescreen">
-        <div className="search-results columns">
-          <div className="filter column is-one-quarter">
+        <div className="search-results">
+          <div className="filter">
             <SearchFilter
               setFilterCategory={setFilterCategory}
               filterCategory={filterCategory}
             ></SearchFilter>
           </div>
-          <div className="matches mq column is-three-quarters">
+          <div className="matches mq">
             {campaigns.map((campaign) => {
               return (
                 <SearchTile key={campaign.id} campaign={campaign}></SearchTile>
