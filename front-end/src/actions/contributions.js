@@ -1,6 +1,6 @@
 import { baseUrl } from "../config";
 
-import { perksArray, daysLeft } from "./campaigns";
+import { perksArray, daysLeft, getCampaignInfo } from "./campaigns";
 
 export const SUCCESSFUL_CONTRIBUTION = "SUCCESSFUL_CONTRIBUTION";
 export const FAILED_CONTRIBUTION = "FAILED_CONTRIBUTION";
@@ -43,6 +43,7 @@ export const submitContribution = (
     campaign.perks = perksArray(campaign);
 
     dispatch(successfulContribution(amount, title, campaign));
+    getCampaignInfo(campaignId)
   } else {
     // const fail = await res.json();
 
