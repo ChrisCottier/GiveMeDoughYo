@@ -34,3 +34,14 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 800px) {
+  /* For mobile phones: */
+  .mq.matches,
+  .mq.new-campaigns-tiles {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+}

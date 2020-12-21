@@ -21,7 +21,7 @@ const Home = () => {
       <div className="splash-container container is-widescreen">
         <div className="splash-new-campaigns">
           <h1 className="title is-3">New Campaigns</h1>
-          <div className="new-campaigns-tiles">
+          <div className="new-campaigns-tiles mq">
             {newCampaigns ? (
               newCampaigns.map((campaign) => (
                 <SearchTile key={campaign.id} campaign={campaign}></SearchTile>
@@ -31,7 +31,7 @@ const Home = () => {
             )}
           </div>
           <h1 className="title is-3 splash-most-backed">Most Backed</h1>
-          <div className="new-campaigns-tiles">
+          <div className="new-campaigns-tiles mq">
             {mostBacked ? (
               mostBacked.map((campaign) => (
                 <SearchTile key={campaign.id} campaign={campaign}></SearchTile>

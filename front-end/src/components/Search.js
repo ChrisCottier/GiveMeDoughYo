@@ -37,7 +37,7 @@ const Search = () => {
               filterCategory={filterCategory}
             ></SearchFilter>
           </div>
-          <div className="matches">
+          <div className="matches mq column is-three-quarters">
             {campaigns.map((campaign) => {
               return (
                 <SearchTile key={campaign.id} campaign={campaign}></SearchTile>
