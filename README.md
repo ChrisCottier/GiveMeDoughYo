@@ -6,7 +6,7 @@ Live demo: https://givemedoughyo.herokuapp.com/
 
 ## Technologies
 
-- Backend: NodeJS / Express / PostgresSQL
+- Backend: NodeJS / Express / PostgreSQL
 - Frontend: React / Redux
 - Amazon AWS, multer S3
 
@@ -15,8 +15,8 @@ Live demo: https://givemedoughyo.herokuapp.com/
 - Secure user authentication using BCrypt hashing.
 - Public and private routes that mirror Indiegogo's platform.
 - Creation of user campaigns, equipped with tracking statistics.
-- Contribution algorithm that allocates perks if users contributions exceed campaign rewards.
-- User profile pages diplaying relevant information including: balance, contributions, campaigns created / following, user details.
+- Contribution algorithm that allocates perks if user's contributions meet perk thresholds.
+- User profile pages displaying relevant information including: balance, contributions, campaigns created / following, user details.
 - Faceted that matches user queries to related campaigns, filterable by campaign category.
 
 ### Campaigns
